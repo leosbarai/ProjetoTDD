@@ -8,13 +8,8 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository = new UsuarioRepository();
 
     public void adicionaUsuarioSvc(Usuario usuario) {
-        if (usuario.getNome() == null) {
-            System.out.println("Nome nulo");
-        } else if (usuario.getEmail() == null) {
-            System.out.println("Email nulo");
-        } else {
-            usuarioRepository.addUsuario(usuario);
-        }
+        validaCadastroUsuario(usuario);
+        usuarioRepository.addUsuario(usuario);
     }
 
     public Integer retonaTamanhoListaSvc() {
@@ -34,7 +29,16 @@ public class UsuarioService {
     }
 
     public void removeUsuarioSvc(Usuario usuario) {
-            usuarioRepository.removeUsuario(usuario);
+        usuarioRepository.removeUsuario(usuario);
     }
 
+    public void validaCadastroUsuario(Usuario usuario) {
+        if (usuario.getNome() == null) {
+            throw new IllegalArgumentException("Nome do usuário não pode ser nulo!");
+        } else if (usuario.getEmail() == null) {
+            throw new IllegalArgumentException("E-mail do usuário não pode ser nulo!");
+        } else if (usuario.getEmail().contains("@email.com")) {
+            throw new IllegalArgumentException("Formato de e-mail incorreto!");
+        }
+    }
 }
