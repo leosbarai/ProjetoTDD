@@ -1,15 +1,22 @@
 package Service;
 
 import Entity.Usuario;
+import Exception.CadastroInvalidoException;
 import Repository.UsuarioRepository;
+
+import java.util.List;
 
 public class UsuarioService {
 
     UsuarioRepository usuarioRepository = new UsuarioRepository();
 
     public void adicionaUsuarioSvc(Usuario usuario) {
-        validaCadastroUsuario(usuario);
-        usuarioRepository.addUsuario(usuario);
+        try {
+            validaCadastroUsuario(usuario);
+            usuarioRepository.addUsuario(usuario);
+        } catch (CadastroInvalidoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public Integer retonaTamanhoListaSvc() {
@@ -32,13 +39,14 @@ public class UsuarioService {
         usuarioRepository.removeUsuario(usuario);
     }
 
-    public void validaCadastroUsuario(Usuario usuario) {
+    public void validaCadastroUsuario(Usuario usuario) throws CadastroInvalidoException {
         if (usuario.getNome() == null) {
-            throw new IllegalArgumentException("Nome do usuário não pode ser nulo!");
+            throw new CadastroInvalidoException("Nome do usuário não pode ser nulo!");
         } else if (usuario.getEmail() == null) {
-            throw new IllegalArgumentException("E-mail do usuário não pode ser nulo!");
+            throw new CadastroInvalidoException("E-mail do usuário não pode ser nulo!");
         } else if (usuario.getEmail().contains("@email.com")) {
-            throw new IllegalArgumentException("Formato de e-mail incorreto!");
+            throw new CadastroInvalidoException("Formato de e-mail incorreto!");
         }
     }
+
 }

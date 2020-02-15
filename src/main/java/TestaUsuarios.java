@@ -4,7 +4,7 @@ import Service.UsuarioService;
 public class TestaUsuarios {
 
     public static void main(String[] args){
-        try {
+
             Usuario user1 = new Usuario("João", "joao@yahoo.com");
             Usuario user2 = new Usuario();
 
@@ -28,10 +28,6 @@ public class TestaUsuarios {
             usuarioService.adicionaUsuarioSvc(user2);
             System.out.println(usuarioService.retonaTamanhoListaSvc());
             System.out.println(usuarioService.retornaListaUsuariosSvc());
-        }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
-        }
-
 
     }
 }

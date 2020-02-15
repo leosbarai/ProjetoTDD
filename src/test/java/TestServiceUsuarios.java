@@ -1,29 +1,30 @@
 import org.junit.Test;
+import Exception.CadastroInvalidoException;
 
 public class TestServiceUsuarios {
 
-    @Test
-    public void insercaoUsuariosSemRestricao(){
+
+    public void insercaoUsuariosSemRestricao() {
+
+    }
+
+    @Test(expected = CadastroInvalidoException.class)
+    public void usuarioComNomeNulo() {
+
+    }
+
+    @Test(expected = CadastroInvalidoException.class)
+    public void usuarioComEmailNulo() {
+
+    }
+
+    @Test(expected = CadastroInvalidoException.class)
+    public void usuarioComEmailRepetido() {
 
     }
 
     @Test
-    public void usuarioComNomeNulo(){
-
-    }
-
-    @Test
-    public void usuarioComEmailNulo(){
-
-    }
-
-    @Test
-    public void usuarioComEmailRepetido(){
-
-    }
-
-    @Test
-    public void remocaoUsuarios(){
-
+    public void remocaoUsuarios() {
+        
     }
 }
