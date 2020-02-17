@@ -4,19 +4,16 @@ import Entity.Usuario;
 import Exception.CadastroInvalidoException;
 import Repository.UsuarioRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioService {
 
     UsuarioRepository usuarioRepository = new UsuarioRepository();
 
-    public void adicionaUsuarioSvc(Usuario usuario) {
-        try {
-            validaCadastroUsuario(usuario);
-            usuarioRepository.addUsuario(usuario);
-        } catch (CadastroInvalidoException e) {
-            System.out.println(e.getMessage());
-        }
+    public void adicionaUsuarioSvc(Usuario usuario) throws CadastroInvalidoException {
+        validaCadastroUsuario(usuario);
+        usuarioRepository.addUsuario(usuario);
     }
 
     public Integer retonaTamanhoListaSvc() {
@@ -25,6 +22,12 @@ public class UsuarioService {
         } else {
             return 0;
         }
+    }
+
+    public List<Usuario> getUsuarios() {
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.addAll(usuarioRepository.getListaUsuario());
+        return usuarios;
     }
 
     public String retornaListaUsuariosSvc() {

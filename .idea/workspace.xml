@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8c0c8820-da8d-40f0-8e17-c8a7464fe29b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TestaUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestaUsuarios.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestServiceUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServiceUsuarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/UsuarioService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/UsuarioService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TestaUsuarios.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/TestaUsuarios.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestServiceUsuarios.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestServiceUsuarios.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,9 +55,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestServiceUsuarios.insercaoUsuariosSemRestricao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjetoTDD" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
+      <option name="METHOD_NAME" value="insercaoUsuariosSemRestricao" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestServiceUsuarios.remocaoUsuarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjetoTDD" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
+      <option name="METHOD_NAME" value="remocaoUsuarios" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.TestServiceUsuarios" />
+        <item itemvalue="JUnit.TestServiceUsuarios.insercaoUsuariosSemRestricao" />
+        <item itemvalue="JUnit.TestServiceUsuarios.remocaoUsuarios" />
         <item itemvalue="Application.TestaUsuarios" />
       </list>
     </recent_temporary>
@@ -96,26 +118,26 @@
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="2170" y="258" width="544" height="560" key="#com.intellij.ide.util.MemberChooser/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581774683930" />
-    <state width="1809" height="296" key="GridCell.Tab.0.bottom" timestamp="1581781488198">
+    <state width="1809" height="296" key="GridCell.Tab.0.bottom" timestamp="1581959731454">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
-    <state width="1809" height="296" key="GridCell.Tab.0.bottom/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581681911165" />
-    <state width="1809" height="296" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581781488198" />
-    <state width="1809" height="296" key="GridCell.Tab.0.center" timestamp="1581781488197">
+    <state width="1809" height="296" key="GridCell.Tab.0.bottom/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581959731454" />
+    <state width="1809" height="296" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581797576631" />
+    <state width="1809" height="296" key="GridCell.Tab.0.center" timestamp="1581959731454">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
-    <state width="1809" height="296" key="GridCell.Tab.0.center/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581681911165" />
-    <state width="1809" height="296" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581781488197" />
-    <state width="1809" height="296" key="GridCell.Tab.0.left" timestamp="1581781488197">
+    <state width="1809" height="296" key="GridCell.Tab.0.center/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581959731454" />
+    <state width="1809" height="296" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581797576631" />
+    <state width="1809" height="296" key="GridCell.Tab.0.left" timestamp="1581959731454">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
-    <state width="1809" height="296" key="GridCell.Tab.0.left/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581681911165" />
-    <state width="1809" height="296" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581781488197" />
-    <state width="1809" height="296" key="GridCell.Tab.0.right" timestamp="1581781488198">
+    <state width="1809" height="296" key="GridCell.Tab.0.left/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581959731454" />
+    <state width="1809" height="296" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581797576631" />
+    <state width="1809" height="296" key="GridCell.Tab.0.right" timestamp="1581959731454">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
-    <state width="1809" height="296" key="GridCell.Tab.0.right/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581681911165" />
-    <state width="1809" height="296" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581781488198" />
+    <state width="1809" height="296" key="GridCell.Tab.0.right/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581959731454" />
+    <state width="1809" height="296" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581797576631" />
     <state width="1809" height="365" key="GridCell.Tab.1.bottom" timestamp="1581557803190">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
@@ -140,6 +162,10 @@
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="1852" y="174" key="SettingsEditor/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581471255343" />
+    <state x="2021" y="246" key="run.anything.popup" timestamp="1581958805587">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2021" y="246" key="run.anything.popup/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581958805587" />
     <state x="2021" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1581556470906">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>

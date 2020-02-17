@@ -11,7 +11,7 @@ public class TestaUsuarios {
             UsuarioService usuarioService = new UsuarioService();
 
             System.out.println("Parte 1 - sucesso");
-            usuarioService.adicionaUsuarioSvc(user1);
+            //usuarioService.adicionaUsuarioSvc(user1);
             System.out.println(usuarioService.retonaTamanhoListaSvc());
             System.out.println(usuarioService.retornaListaUsuariosSvc());
 
@@ -25,7 +25,7 @@ public class TestaUsuarios {
             //usuarioService.adicionaUsuarioSvc(user2);
 
             user2.setEmail("joao@yahoo.com");
-            usuarioService.adicionaUsuarioSvc(user2);
+            //usuarioService.adicionaUsuarioSvc(user2);
             System.out.println(usuarioService.retonaTamanhoListaSvc());
             System.out.println(usuarioService.retornaListaUsuariosSvc());
 

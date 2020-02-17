@@ -4,19 +4,23 @@ import Service.UsuarioService;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TestServiceUsuarios {
 
     @Test
-    public void insercaoUsuariosSemRestricao() {
+    public void insercaoUsuariosSemRestricao() throws CadastroInvalidoException {
         Usuario usuario = new Usuario("Leonardo", "leonardo@gmail.com");
         UsuarioService usuarioService = new UsuarioService();
         usuarioService.adicionaUsuarioSvc(usuario);
 
-        Assert.assertEquals(usuario.toString(), usuarioService.retornaListaUsuariosSvc());
+        Assert.assertEquals(usuario, usuarioService.getUsuarios().get(0));
     }
 
     @Test(expected = CadastroInvalidoException.class)
-    public void usuarioComNomeNulo() {
+    public void usuarioComNomeNulo() throws CadastroInvalidoException {
         Usuario usuario = new Usuario();
         UsuarioService usuarioService = new UsuarioService();
 
@@ -24,7 +28,7 @@ public class TestServiceUsuarios {
     }
 
     @Test(expected = CadastroInvalidoException.class)
-    public void usuarioComEmailNulo() {
+    public void usuarioComEmailNulo() throws CadastroInvalidoException {
         Usuario usuario = new Usuario();
         usuario.setNome("João");
         UsuarioService usuarioService = new UsuarioService();
@@ -33,7 +37,7 @@ public class TestServiceUsuarios {
     }
 
     @Test(expected = CadastroInvalidoException.class)
-    public void usuarioComEmailRepetido() {
+    public void usuarioComEmailRepetido() throws CadastroInvalidoException {
         Usuario usuario = new Usuario();
         usuario.setNome("João");
         usuario.setEmail("joao@email.com");
@@ -43,7 +47,7 @@ public class TestServiceUsuarios {
     }
 
     @Test
-    public void remocaoUsuarios() {
+    public void remocaoUsuarios() throws CadastroInvalidoException {
         Usuario usuario1 = new Usuario("Leonardo", "leonardo@gmail.com");
         Usuario usuario2 = new Usuario("João", "joao@gmail.com");
         UsuarioService usuarioService = new UsuarioService();
@@ -52,7 +56,10 @@ public class TestServiceUsuarios {
         usuarioService.adicionaUsuarioSvc(usuario2);
         usuarioService.removeUsuarioSvc(usuario1);
 
+        List<Usuario> usuarios = new ArrayList<>();
+        usuarios.add(usuario2);
+
         Assert.assertEquals(1, usuarioService.retonaTamanhoListaSvc().intValue());
-        Assert.assertEquals(usuario2.toString(), usuarioService.retornaListaUsuariosSvc());
+        Assert.assertEquals(usuarios, usuarioService.getUsuarios());
     }
 }

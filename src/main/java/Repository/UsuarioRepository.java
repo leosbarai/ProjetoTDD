@@ -26,6 +26,9 @@ public class UsuarioRepository {
         return listaUsuario.size();
     }
 
+    public List<Usuario> getListaUsuario() {
+        return listaUsuario;
+    }
     public String retornaListaUsuarios() {
         return listaUsuario.toString();
     }
