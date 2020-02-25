@@ -32,4 +32,13 @@ public class ProdutoService {
             }
         }
     }
+
+    public void addProdutoSvc(Produto produto) throws CadastroInvalidoException {
+        validaProduto(produto);
+        produtoRepository.addProdutos(produto);
+    }
+
+    public void removeProdutosSvc(Produto produto) {
+        produtoRepository.removeProdutos(produto);
+    }
 }

@@ -49,6 +49,12 @@ public class UsuarioService {
             throw new CadastroInvalidoException("E-mail do usuário não pode ser nulo!");
         } else if (usuario.getEmail().contains("@email.com")) {
             throw new CadastroInvalidoException("Formato de e-mail incorreto!");
+        } else {
+            for (Usuario x : getUsuarios()) {
+                if (usuario.getEmail() == x.getEmail()) {
+                    throw new CadastroInvalidoException("E-mail já cadastrado para outro usuário!");
+                }
+            }
         }
     }
 
