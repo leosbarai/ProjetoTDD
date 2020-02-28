@@ -32,7 +32,27 @@ public class ItemPedidoService {
         itemPedidoRepository.addItemPedido(itemPedido);
     }
 
-    public void removeItemPedido(ItemPedido itemPedido) {
+    public void removeItemPedidoSvc(ItemPedido itemPedido) {
         itemPedidoRepository.removeItem(itemPedido);
+    }
+
+    public void addQuantidade(ItemPedido itemPedido, Integer qtd) {
+        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
+            if (x.getProduto() == itemPedido.getProduto()) {
+                x.setQuantidade(x.getQuantidade() + qtd);
+            }
+        }
+    }
+
+    public void removeQuantidade(ItemPedido itemPedido, Integer qtd) throws CadastroInvalidoException {
+        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
+            if (x.getProduto() == itemPedido.getProduto()) {
+                if (x.getQuantidade() > qtd) {
+                    x.setQuantidade(x.getQuantidade() - qtd);
+                } else {
+                    throw new CadastroInvalidoException("Quantidade não pode ser removida em sua totalidade!");
+                }
+            }
+        }
     }
 }

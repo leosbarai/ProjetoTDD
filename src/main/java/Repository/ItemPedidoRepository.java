@@ -1,6 +1,7 @@
 package Repository;
 
 import Entity.ItemPedido;
+import Exception.CadastroInvalidoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,4 +26,5 @@ public class ItemPedidoRepository {
     public List<ItemPedido> getListaItens() {
         return itemPedidoList;
     }
+
 }

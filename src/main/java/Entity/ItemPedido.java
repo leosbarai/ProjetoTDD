@@ -1,6 +1,7 @@
 package Entity;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ItemPedido {
 
@@ -29,5 +30,18 @@ public class ItemPedido {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ItemPedido that = (ItemPedido) o;
+        return produto.equals(that.produto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(produto);
     }
 }
