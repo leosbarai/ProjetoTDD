@@ -60,4 +60,16 @@ public class TestItemPedidoService {
 
         Assert.assertEquals((Object) 1, itemPedidoService.itemPedidoList().get(0).getQuantidade());
     }
+
+    @Test
+    public void totalItem() throws CadastroInvalidoException {
+        ProdutoService produtoService = new ProdutoService();
+        ItemPedido itemPedido = new ItemPedido(5, produtoService.mockList().get(1));
+
+        ItemPedidoService itemPedidoService = new ItemPedidoService();
+        itemPedidoService.addItemPedidoSvc(itemPedido);
+
+        Assert.assertEquals((Object) 10.0, itemPedidoService.getTotalItemSvc());
+    }
+
 }

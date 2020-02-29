@@ -1,6 +1,5 @@
 package Entity;
 
-import java.util.List;
 import java.util.Objects;
 
 public class ItemPedido {
@@ -30,6 +29,10 @@ public class ItemPedido {
 
     public void setProduto(Produto produto) {
         this.produto = produto;
+    }
+
+    public Double getTotalItem(){
+        return this.produto.getPrecoUnitario() * this.quantidade;
     }
 
     @Override

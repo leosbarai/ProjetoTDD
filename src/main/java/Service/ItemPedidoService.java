@@ -1,8 +1,8 @@
 package Service;
 
 import Entity.ItemPedido;
-import Repository.ItemPedidoRepository;
 import Exception.CadastroInvalidoException;
+import Repository.ItemPedidoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +54,13 @@ public class ItemPedidoService {
                 }
             }
         }
+    }
+
+    public Double getTotalItemSvc() {
+        Double total = 0.0;
+        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
+            total += x.getTotalItem();
+        }
+        return total;
     }
 }

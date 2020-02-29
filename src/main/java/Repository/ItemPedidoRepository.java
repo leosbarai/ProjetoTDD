@@ -1,7 +1,6 @@
 package Repository;
 
 import Entity.ItemPedido;
-import Exception.CadastroInvalidoException;
 
 import java.util.ArrayList;
 import java.util.List;
