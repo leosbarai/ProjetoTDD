@@ -5,6 +5,8 @@ import Entity.Pedido;
 import Repository.PedidoRepository;
 import Exception.CadastroInvalidoException;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +48,9 @@ public class PedidoService {
                 valorTotal += x.getTotalItem();
             }
         }
-        return valorTotal;
+
+        BigDecimal total = new BigDecimal(valorTotal).setScale(2, RoundingMode.HALF_EVEN);
+        return total.doubleValue();
     }
 
 }

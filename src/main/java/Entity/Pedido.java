@@ -27,6 +27,10 @@ public class Pedido {
         return itemPedidoList;
     }
 
+    public void setItemPedidoList(List<ItemPedido> itemPedidoList) {
+        this.itemPedidoList = itemPedidoList;
+    }
+
     public Double getTotal() {
         Double total = 0.0;
         for (ItemPedido x : itemPedidoList) {
