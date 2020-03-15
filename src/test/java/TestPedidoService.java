@@ -1,42 +1,42 @@
+import cadastroexception.CadastroInvalidoException;
 import entity.ItemPedido;
 import entity.Pedido;
 import entity.Produto;
 import entity.Usuario;
-import cadastroexception.CadastroInvalidoException;
-import service.ItemPedidoService;
-import service.PedidoService;
-import service.ProdutoService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import service.ItemPedidoService;
+import service.PedidoService;
+import service.ProdutoService;
 
 public class TestPedidoService {
 
     private ProdutoService produtoService;
+    private ItemPedidoService itemPedidoService;
+    private PedidoService pedidoService;
+    private Usuario usuario;
+    private Pedido pedido;
 
     @Before
     public void setup() {
         produtoService = new ProdutoService();
-
+        itemPedidoService = new ItemPedidoService();
+        pedidoService = new PedidoService();
+        usuario = new Usuario("João", "joao@gmail.com");
+        pedido = new Pedido(usuario);
     }
 
+    private ItemPedido itemPedido(int quantidade, Produto produto) {
+        return new ItemPedido(quantidade, produto);
+    }
 
     @Test
     public void calculaPrecoTotalItens() throws CadastroInvalidoException {
-        Usuario usuario = new Usuario("João", "joao@gmail.com");
-        PedidoService pedidoService = new PedidoService();
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        ItemPedido pao = new ItemPedido(1, produtoService.alface());
-        itemPedidoService.addItemPedidoSvc(pao);
-
-        ItemPedido hamburguer = new ItemPedido(1, produtoService.mockList().get(2));
-        itemPedidoService.addItemPedidoSvc(hamburguer);
-
-        ItemPedido queijo = new ItemPedido(1, produtoService.mockList().get(4));
-        itemPedidoService.addItemPedidoSvc(queijo);
-
-        Pedido pedido = new Pedido(usuario);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.hamburguer()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
         Assert.assertEquals(Double.valueOf(5.5), pedidoService.totalPedido(pedido));
@@ -44,21 +44,10 @@ public class TestPedidoService {
 
     @Test
     public void calculaDescontoPorQuantidadeDoItem() throws CadastroInvalidoException {
-        Usuario usuario = new Usuario("João", "joao@gmail.com");
-        ProdutoService produtoService = new ProdutoService();
-        PedidoService pedidoService = new PedidoService();
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        ItemPedido pao = new ItemPedido(1, produtoService.mockList().get(5));
-        itemPedidoService.addItemPedidoSvc(pao);
-
-        ItemPedido hamburguer = new ItemPedido(5, produtoService.mockList().get(2));
-        itemPedidoService.addItemPedidoSvc(hamburguer);
-
-        ItemPedido queijo = new ItemPedido(1, produtoService.mockList().get(4));
-        itemPedidoService.addItemPedidoSvc(queijo);
-
-        Pedido pedido = new Pedido(usuario);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(5, produtoService.hamburguer()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
         Assert.assertEquals((Object) 16.0, pedidoService.totalPedido(pedido));
@@ -66,89 +55,38 @@ public class TestPedidoService {
 
     @Test
     public void calculaDescontoPorUnidades() throws CadastroInvalidoException {
-        Usuario usuario = new Usuario("João", "joao@gmail.com");
-        ProdutoService produtoService = new ProdutoService();
-        PedidoService pedidoService = new PedidoService();
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        ItemPedido pao = new ItemPedido(1, produtoService.mockList().get(5));
-        itemPedidoService.addItemPedidoSvc(pao);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.hamburguer()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.alface()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.bacon()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.ovo()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.maionese()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.mostarda()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.catchup()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.azeitona()));
 
-        ItemPedido hamburguer = new ItemPedido(1, produtoService.mockList().get(2));
-        itemPedidoService.addItemPedidoSvc(hamburguer);
-
-        ItemPedido queijo = new ItemPedido(1, produtoService.mockList().get(4));
-        itemPedidoService.addItemPedidoSvc(queijo);
-
-        ItemPedido alface = new ItemPedido(1, produtoService.mockList().get(0));
-        itemPedidoService.addItemPedidoSvc(alface);
-
-        ItemPedido bacon = new ItemPedido(1, produtoService.mockList().get(1));
-        itemPedidoService.addItemPedidoSvc(bacon);
-
-        ItemPedido ovo = new ItemPedido(1, produtoService.mockList().get(3));
-        itemPedidoService.addItemPedidoSvc(ovo);
-
-        ItemPedido maionese = new ItemPedido(1, produtoService.mockList().get(6));
-        itemPedidoService.addItemPedidoSvc(maionese);
-
-        ItemPedido mostarda = new ItemPedido(1, produtoService.mockList().get(7));
-        itemPedidoService.addItemPedidoSvc(mostarda);
-
-        ItemPedido catchup = new ItemPedido(1, produtoService.mockList().get(8));
-        itemPedidoService.addItemPedidoSvc(catchup);
-
-        ItemPedido azeitona = pedido(1, produtoService.alface());
-        itemPedidoService.addItemPedidoSvc(azeitona);
-
-        Pedido pedido = new Pedido(usuario);
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
         Assert.assertEquals((Object) 10.16, pedidoService.totalPedido(pedido));
     }
 
-    private ItemPedido pedido(int quantidade, Produto produto) {
-        return new ItemPedido(quantidade, produto);
-    }
 
     @Test
     public void calculaDescontoPorQuantidadesEUnidades() throws CadastroInvalidoException {
-        Usuario usuario = new Usuario("João", "joao@gmail.com");
-        ProdutoService produtoService = new ProdutoService();
-        PedidoService pedidoService = new PedidoService();
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        ItemPedido pao = new ItemPedido(1, produtoService.mockList().get(5));
-        itemPedidoService.addItemPedidoSvc(pao);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(6, produtoService.hamburguer()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.alface()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.bacon()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.ovo()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.maionese()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.mostarda()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.catchup()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.azeitona()));
 
-        ItemPedido hamburguer = new ItemPedido(6, produtoService.mockList().get(2));
-        itemPedidoService.addItemPedidoSvc(hamburguer);
-
-        ItemPedido queijo = new ItemPedido(1, produtoService.mockList().get(4));
-        itemPedidoService.addItemPedidoSvc(queijo);
-
-        ItemPedido alface = new ItemPedido(1, produtoService.mockList().get(0));
-        itemPedidoService.addItemPedidoSvc(alface);
-
-        ItemPedido bacon = new ItemPedido(1, produtoService.mockList().get(1));
-        itemPedidoService.addItemPedidoSvc(bacon);
-
-        ItemPedido ovo = new ItemPedido(1, produtoService.mockList().get(3));
-        itemPedidoService.addItemPedidoSvc(ovo);
-
-        ItemPedido maionese = new ItemPedido(1, produtoService.mockList().get(6));
-        itemPedidoService.addItemPedidoSvc(maionese);
-
-        ItemPedido mostarda = new ItemPedido(1, produtoService.mockList().get(7));
-        itemPedidoService.addItemPedidoSvc(mostarda);
-
-        ItemPedido catchup = new ItemPedido(1, produtoService.mockList().get(8));
-        itemPedidoService.addItemPedidoSvc(catchup);
-
-        ItemPedido azeitona = new ItemPedido(1, produtoService.mockList().get(9));
-        itemPedidoService.addItemPedidoSvc(azeitona);
-
-        Pedido pedido = new Pedido(usuario);
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
         Assert.assertEquals((Object) 23.52, pedidoService.totalPedido(pedido));
