@@ -1,6 +1,6 @@
-package Repository;
+package repository;
 
-import Entity.Produto;
+import entity.Produto;
 
 import java.util.ArrayList;
 import java.util.List;

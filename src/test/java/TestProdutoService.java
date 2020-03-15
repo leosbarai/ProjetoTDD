@@ -1,5 +1,5 @@
-import Entity.Produto;
-import Service.ProdutoService;
+import entity.Produto;
+import service.ProdutoService;
 import cadastroexception.MotivoCadastroInvalido;
 import org.junit.Assert;
 import org.junit.Test;

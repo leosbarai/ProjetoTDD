@@ -1,11 +1,11 @@
-import Entity.ItemPedido;
-import Entity.Pedido;
-import Entity.Produto;
-import Entity.Usuario;
+import entity.ItemPedido;
+import entity.Pedido;
+import entity.Produto;
+import entity.Usuario;
 import cadastroexception.CadastroInvalidoException;
-import Service.ItemPedidoService;
-import Service.PedidoService;
-import Service.ProdutoService;
+import service.ItemPedidoService;
+import service.PedidoService;
+import service.ProdutoService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +17,9 @@ public class TestPedidoService {
     @Before
     public void setup() {
         produtoService = new ProdutoService();
+
     }
+
 
     @Test
     public void calculaPrecoTotalItens() throws CadastroInvalidoException {

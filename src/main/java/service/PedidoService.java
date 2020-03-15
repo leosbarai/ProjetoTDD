@@ -1,13 +1,13 @@
-package Service;
+package service;
 
-import Entity.ItemPedido;
-import Entity.Pedido;
-import Repository.PedidoRepository;
+import cadastroexception.MotivoCadastroInvalido;
+import entity.ItemPedido;
+import entity.Pedido;
+import repository.PedidoRepository;
 import cadastroexception.CadastroInvalidoException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PedidoService {
@@ -20,9 +20,9 @@ public class PedidoService {
 
     public void validaPedido(Pedido pedido) throws CadastroInvalidoException {
         if (pedido.getUsuario() == null) {
-            throw new CadastroInvalidoException("Usuário não pode ser nulo!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.USUARIO_NULO_PEDIDO);
         } else if (pedido.getItemPedidoList() == null) {
-            throw new CadastroInvalidoException("Pedido sem itens!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.PEDIDO_SEM_ITENS);
         }
     }
 
@@ -37,13 +37,13 @@ public class PedidoService {
 
     public Double totalPedido(Pedido pedido) {
         Double valorTotal = 0.0;
-        for (ItemPedido x : pedido.getItemPedidoList()) {
-            if (pedido.getItemPedidoList().size() >= 10 && x.getQuantidade() < 5) {
-                valorTotal += x.getTotalItem() - (x.getTotalItem() * 0.05);
-            } else if (x.getQuantidade() >= 5) {
-                valorTotal += x.getTotalItem() - (x.getTotalItem() * 0.10);
+        for (ItemPedido itemPedidoList : pedido.getItemPedidoList()) {
+            if (pedido.getItemPedidoList().size() >= 10 && itemPedidoList.getQuantidade() < 5) {
+                valorTotal += itemPedidoList.getTotalItem() - (itemPedidoList.getTotalItem() * 0.05);
+            } else if (itemPedidoList.getQuantidade() >= 5) {
+                valorTotal += itemPedidoList.getTotalItem() - (itemPedidoList.getTotalItem() * 0.10);
             } else {
-                valorTotal += x.getTotalItem();
+                valorTotal += itemPedidoList.getTotalItem();
             }
         }
 

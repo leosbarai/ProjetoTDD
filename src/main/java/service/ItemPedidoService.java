@@ -1,8 +1,9 @@
-package Service;
+package service;
 
-import Entity.ItemPedido;
 import cadastroexception.CadastroInvalidoException;
-import Repository.ItemPedidoRepository;
+import cadastroexception.MotivoCadastroInvalido;
+import entity.ItemPedido;
+import repository.ItemPedidoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +20,11 @@ public class ItemPedidoService {
 
     public void validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {
         if (itemPedido.getQuantidade() == null) {
-            throw new CadastroInvalidoException("Quantidade não pode ser nula!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.QUANTIDADE_ITEMPEDIDO_NULA);
         } else if (itemPedido.getQuantidade() <= 0) {
-            throw new CadastroInvalidoException("Quantidade incorreta!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.QUANTIDADE_ITEMPEDIDO_INCORRETA);
         } else if (itemPedido.getProduto() == null) {
-            throw new CadastroInvalidoException("Produto não pode ser nulo!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_ITEMPEDIDO_NULO);
         }
     }
 
@@ -45,12 +46,12 @@ public class ItemPedidoService {
     }
 
     public void removeQuantidade(ItemPedido itemPedido, Integer qtd) throws CadastroInvalidoException {
-        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
-            if (x.getProduto() == itemPedido.getProduto()) {
-                if (x.getQuantidade() > qtd) {
-                    x.setQuantidade(x.getQuantidade() - qtd);
+        for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
+            if (itemPedidoList.getProduto() == itemPedido.getProduto()) {
+                if (itemPedidoList.getQuantidade() > qtd) {
+                    itemPedidoList.setQuantidade(itemPedidoList.getQuantidade() - qtd);
                 } else {
-                    throw new CadastroInvalidoException("Quantidade não pode ser removida em sua totalidade!");
+                    throw new CadastroInvalidoException(MotivoCadastroInvalido.REMOCAO_QUANTIDADE_INCORRETA_ITEMPEDIDO);
                 }
             }
         }
@@ -58,8 +59,8 @@ public class ItemPedidoService {
 
     public Double getTotalItemSvc() {
         Double total = 0.0;
-        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
-            total += x.getTotalItem();
+        for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
+            total += itemPedidoList.getTotalItem();
         }
         return total;
     }

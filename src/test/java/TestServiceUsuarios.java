@@ -1,6 +1,6 @@
-import Entity.Usuario;
+import entity.Usuario;
 import cadastroexception.CadastroInvalidoException;
-import Service.UsuarioService;
+import service.UsuarioService;
 import org.junit.Assert;
 import org.junit.Test;
 

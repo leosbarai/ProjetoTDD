@@ -1,4 +1,4 @@
-package Entity;
+package entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +31,4 @@ public class Pedido {
         this.itemPedidoList = itemPedidoList;
     }
 
-    public Double getTotal() {
-        Double total = 0.0;
-        for (ItemPedido x : itemPedidoList) {
-            total += x.getTotalItem();
-        }
-
-        return total;
-    }
 }

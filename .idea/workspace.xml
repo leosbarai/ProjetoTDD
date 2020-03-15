@@ -2,22 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c0c8820-da8d-40f0-8e17-c8a7464fe29b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cadastroexception/CadastroInvalidoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cadastroexception/MotivoCadastroInvalido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Exception/CadastroInvalidoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ItemPedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ItemPedidoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/PedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/PedidoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/ProdutoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Service/UsuarioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestaUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestaUsuarios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/ItemPedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/ItemPedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Pedido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Produto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entity/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/ItemPedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ItemPedidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/PedidoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/PedidoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/ProdutoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/ProdutoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Repository/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ItemPedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ItemPedidoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/PedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/PedidoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/ProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProdutoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Service/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/TestaUsuarios.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cadastroexception/MotivoCadastroInvalido.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cadastroexception/MotivoCadastroInvalido.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestItemPedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestItemPedidoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestPedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestPedidoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestProdutoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestProdutoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/TestServiceUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServiceUsuarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/ProdutoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Service/ProdutoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestPedidoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestPedidoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestProdutoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestProdutoService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +51,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cadastroexception" />
+    </key>
   </component>
   <component name="RunManager" selected="JUnit.TestProdutoService.produtoSemPreco">
     <configuration name="TestItemPedidoService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -119,6 +127,16 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
     <state x="1958" y="200" key="#Project_Structure" timestamp="1581471130944">
       <screen x="1366" y="0" width="1920" height="1080" />
@@ -143,10 +161,15 @@
     <state x="2170" y="258" key="#com.intellij.ide.util.MemberChooser/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582726215754" />
     <state x="2170" y="258" width="544" height="560" key="#com.intellij.ide.util.MemberChooser/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1583072068302" />
     <state x="610" y="144" key="#com.intellij.ide.util.MemberChooser/65.24.1301.744@65.24.1301.744" timestamp="1583520383660" />
-    <state x="2061" y="24" width="594" height="1056" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1582725985649">
+    <state x="2061" y="24" width="594" height="1056" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1584284498237">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="2061" y="24" width="594" height="1056" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582725985649" />
+    <state x="2061" y="24" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584284498237" />
+    <state x="2096" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1584284518030">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2096" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584284518030" />
     <state width="1255" height="192" key="GridCell.Tab.0.bottom" timestamp="1583521704458">
       <screen x="65" y="24" width="3221" height="1056" />
     </state>
@@ -203,14 +226,18 @@
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="2003" y="249" width="710" height="578" key="find.popup/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582849894410" />
+    <state x="2108" y="168" key="refactoring.ChangeSignatureDialog" timestamp="1584284350576">
+      <screen x="1366" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2108" y="168" key="refactoring.ChangeSignatureDialog/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584284350576" />
     <state x="509" y="193" key="run.anything.popup" timestamp="1583520436392">
       <screen x="65" y="24" width="1301" height="744" />
     </state>
     <state x="2021" y="246" key="run.anything.popup/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581958805587" />
     <state x="509" y="193" key="run.anything.popup/65.24.1301.744@65.24.1301.744" timestamp="1583520436392" />
-    <state x="2021" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1581556470906">
+    <state x="2021" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1584283071492">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
-    <state x="2021" y="236" width="672" height="678" key="search.everywhere.popup/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1581556470906" />
+    <state x="2021" y="236" width="672" height="678" key="search.everywhere.popup/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584283071492" />
   </component>
 </project>

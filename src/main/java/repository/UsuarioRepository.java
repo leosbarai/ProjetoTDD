@@ -1,6 +1,6 @@
-package Repository;
+package repository;
 
-import Entity.Usuario;
+import entity.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;

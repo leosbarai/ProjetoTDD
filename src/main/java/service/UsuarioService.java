@@ -1,8 +1,9 @@
-package Service;
+package service;
 
-import Entity.Usuario;
+import cadastroexception.MotivoCadastroInvalido;
+import entity.Usuario;
 import cadastroexception.CadastroInvalidoException;
-import Repository.UsuarioRepository;
+import repository.UsuarioRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +45,15 @@ public class UsuarioService {
 
     public void validaCadastroUsuario(Usuario usuario) throws CadastroInvalidoException {
         if (usuario.getNome() == null) {
-            throw new CadastroInvalidoException("Nome do usuário não pode ser nulo!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.USUARIO_NULO);
         } else if (usuario.getEmail() == null) {
-            throw new CadastroInvalidoException("E-mail do usuário não pode ser nulo!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.EMAIL_USUARIO_NULO);
         } else if (usuario.getEmail().contains("@email.com")) {
-            throw new CadastroInvalidoException("Formato de e-mail incorreto!");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.FORMATO_EMAIL_USUARIO_INCORRETO);
         } else {
-            for (Usuario x : getUsuarios()) {
-                if (usuario.getEmail() == x.getEmail()) {
-                    throw new CadastroInvalidoException("E-mail já cadastrado para outro usuário!");
+            for (Usuario usuariosList : getUsuarios()) {
+                if (usuario.getEmail() == usuariosList.getEmail()) {
+                    throw new CadastroInvalidoException(MotivoCadastroInvalido.EMAIL_USUARIO_EXISTENTE);
                 }
             }
         }
