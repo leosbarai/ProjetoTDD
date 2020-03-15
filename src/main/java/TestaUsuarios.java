@@ -1,6 +1,6 @@
 import Entity.Usuario;
 import Service.UsuarioService;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 
 public class TestaUsuarios {
 

@@ -1,7 +1,7 @@
 package Service;
 
 import Entity.Usuario;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 import Repository.UsuarioRepository;
 
 import java.util.ArrayList;

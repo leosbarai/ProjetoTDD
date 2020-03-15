@@ -1,25 +1,31 @@
 import Entity.ItemPedido;
 import Entity.Pedido;
+import Entity.Produto;
 import Entity.Usuario;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 import Service.ItemPedidoService;
 import Service.PedidoService;
 import Service.ProdutoService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 public class TestPedidoService {
+
+    private ProdutoService produtoService;
+
+    @Before
+    public void setup() {
+        produtoService = new ProdutoService();
+    }
 
     @Test
     public void calculaPrecoTotalItens() throws CadastroInvalidoException {
         Usuario usuario = new Usuario("João", "joao@gmail.com");
-        ProdutoService produtoService = new ProdutoService();
         PedidoService pedidoService = new PedidoService();
 
         ItemPedidoService itemPedidoService = new ItemPedidoService();
-        ItemPedido pao = new ItemPedido(1, produtoService.mockList().get(5));
+        ItemPedido pao = new ItemPedido(1, produtoService.alface());
         itemPedidoService.addItemPedidoSvc(pao);
 
         ItemPedido hamburguer = new ItemPedido(1, produtoService.mockList().get(2));
@@ -31,7 +37,7 @@ public class TestPedidoService {
         Pedido pedido = new Pedido(usuario);
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals((Object) 5.5, pedidoService.totalPedido(pedido));
+        Assert.assertEquals(Double.valueOf(5.5), pedidoService.totalPedido(pedido));
     }
 
     @Test
@@ -90,13 +96,17 @@ public class TestPedidoService {
         ItemPedido catchup = new ItemPedido(1, produtoService.mockList().get(8));
         itemPedidoService.addItemPedidoSvc(catchup);
 
-        ItemPedido azeitona = new ItemPedido(1, produtoService.mockList().get(9));
+        ItemPedido azeitona = pedido(1, produtoService.alface());
         itemPedidoService.addItemPedidoSvc(azeitona);
 
         Pedido pedido = new Pedido(usuario);
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
         Assert.assertEquals((Object) 10.16, pedidoService.totalPedido(pedido));
+    }
+
+    private ItemPedido pedido(int quantidade, Produto produto) {
+        return new ItemPedido(quantidade, produto);
     }
 
     @Test

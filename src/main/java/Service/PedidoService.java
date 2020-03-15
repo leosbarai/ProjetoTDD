@@ -3,7 +3,7 @@ package Service;
 import Entity.ItemPedido;
 import Entity.Pedido;
 import Repository.PedidoRepository;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,9 +15,7 @@ public class PedidoService {
     private PedidoRepository pedidoRepository = new PedidoRepository();
 
     public List<Pedido> pedidoList() {
-        List<Pedido> pedidoList = new ArrayList<>();
-        pedidoList.addAll(pedidoRepository.getPedidoList());
-        return pedidoList;
+        return pedidoRepository.getPedidoList();
     }
 
     public void validaPedido(Pedido pedido) throws CadastroInvalidoException {

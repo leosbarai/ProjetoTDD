@@ -1,8 +1,9 @@
 package Service;
 
 import Entity.Produto;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 import Repository.ProdutoRepository;
+import cadastroexception.MotivoCadastroInvalido;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +13,7 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository = new ProdutoRepository();
 
     public List<Produto> mockList() {
-        Produto alface = new Produto("001", "Alface", 0.40);
+        Produto alface = alface();
         Produto bacon = new Produto("002", "Bacon", 2.00);
         Produto hamburguer = new Produto("003", "Hamburguer de carne", 3.00);
         Produto ovo = new Produto("004", "Ovo", 0.80);
@@ -37,6 +38,9 @@ public class ProdutoService {
 
         return produtoList;
     }
+    public Produto alface() {
+        return new Produto("001", "Alface", 0.40);
+    }
 
     public List<Produto> produtoList() {
         List<Produto> produtoList = new ArrayList<>();
@@ -50,7 +54,7 @@ public class ProdutoService {
         } else if (produto.getDescricao() == null) {
             throw new CadastroInvalidoException("Descrição do produto não pode ser nula!");
         } else if (produto.getPrecoUnitario() == null) {
-            throw new CadastroInvalidoException("Preço do produto é obrigatório");
+            throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_SEM_PRECO);
         } else {
             for (Produto x : produtoList()) {
                 if (produto.getCodigo() == x.getCodigo()) {

@@ -1,9 +1,9 @@
 import Entity.Produto;
-import Repository.ProdutoRepository;
 import Service.ProdutoService;
+import cadastroexception.MotivoCadastroInvalido;
 import org.junit.Assert;
 import org.junit.Test;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 
 public class TestProdutoService {
 
@@ -35,14 +35,19 @@ public class TestProdutoService {
         produtoService.addProdutoSvc(produto);
     }
 
-    @Test(expected = CadastroInvalidoException.class)
+    @Test
     public void produtoSemPreco() throws CadastroInvalidoException {
         Produto produto = new Produto();
         produto.setCodigo("001");
         produto.setDescricao("Bacon");
 
         ProdutoService produtoService = new ProdutoService();
-        produtoService.addProdutoSvc(produto);
+        try {
+            produtoService.addProdutoSvc(produto);
+        } catch (CadastroInvalidoException e) {
+            Assert.assertEquals(MotivoCadastroInvalido.PRODUTO_SEM_PRECO, e.getMotivo());
+        }
+
     }
 
     @Test(expected = CadastroInvalidoException.class)

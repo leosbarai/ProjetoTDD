@@ -1,7 +1,7 @@
 package Service;
 
 import Entity.ItemPedido;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 import Repository.ItemPedidoRepository;
 
 import java.util.ArrayList;

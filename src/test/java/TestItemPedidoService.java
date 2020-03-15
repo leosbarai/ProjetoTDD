@@ -1,5 +1,5 @@
 import Entity.ItemPedido;
-import Exception.CadastroInvalidoException;
+import cadastroexception.CadastroInvalidoException;
 import Service.ItemPedidoService;
 import Service.ProdutoService;
 import org.junit.Assert;
