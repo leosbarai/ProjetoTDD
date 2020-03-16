@@ -68,17 +68,11 @@ public class TestServiceUsuarios {
 
     @Test
     public void remocaoUsuarios() throws CadastroInvalidoException {
-        Usuario usuario1 = addUsuario("Leonardo", "leonardo@gmail.com");
-        Usuario usuario2 = addUsuario("João", "joao@gmail.com");
 
-        usuarioService.adicionaUsuarioSvc(usuario1);
-        usuarioService.adicionaUsuarioSvc(usuario2);
-        usuarioService.removeUsuarioSvc(usuario1);
-
-        List<Usuario> usuarios = new ArrayList<>();
-        usuarios.add(usuario2);
+        usuarioService.adicionaUsuarioSvc(addUsuario("Leonardo", "leonardo@gmail.com"));
+        usuarioService.adicionaUsuarioSvc(addUsuario("João", "joao@gmail.com"));
+        usuarioService.removeUsuarioSvc(usuarioService.getUsuarios().get(1));
 
         Assert.assertEquals(1, usuarioService.retonaTamanhoListaSvc().intValue());
-        Assert.assertEquals(usuarios, usuarioService.getUsuarios());
     }
 }
