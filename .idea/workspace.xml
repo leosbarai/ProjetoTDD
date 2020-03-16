@@ -3,25 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8c0c8820-da8d-40f0-8e17-c8a7464fe29b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestPedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestPedidoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Entity/ItemPedido.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Entity/Pedido.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Entity/Produto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Entity/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Exception/CadastroInvalidoException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Repository/ItemPedidoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Repository/PedidoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Repository/ProdutoRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Repository/UsuarioRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/ItemPedidoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/PedidoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/ProdutoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Service/UsuarioService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/TestaUsuarios.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestItemPedidoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestItemPedidoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestPedidoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestPedidoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestProdutoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestProdutoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/TestServiceUsuarios.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestServiceUsuarios.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestServiceUsuarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServiceUsuarios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,51 +40,51 @@
       <recent name="cadastroexception" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestPedidoService">
-    <configuration name="TestPedidoService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestServiceUsuarios">
+    <configuration name="TestServiceUsuarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjetoTDD" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestPedidoService" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPedidoService.calculaDescontoPorQuantidadeDoItem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestServiceUsuarios.insercaoUsuariosSemRestricao" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjetoTDD" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestPedidoService" />
-      <option name="METHOD_NAME" value="calculaDescontoPorQuantidadeDoItem" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
+      <option name="METHOD_NAME" value="insercaoUsuariosSemRestricao" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPedidoService.calculaDescontoPorQuantidadesEUnidades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestServiceUsuarios.remocaoUsuarios" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjetoTDD" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestPedidoService" />
-      <option name="METHOD_NAME" value="calculaDescontoPorQuantidadesEUnidades" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
+      <option name="METHOD_NAME" value="remocaoUsuarios" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPedidoService.calculaDescontoPorUnidades" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestServiceUsuarios.usuarioComEmailNulo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjetoTDD" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestPedidoService" />
-      <option name="METHOD_NAME" value="calculaDescontoPorUnidades" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
+      <option name="METHOD_NAME" value="usuarioComEmailNulo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPedidoService.calculaPrecoTotalItens" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestServiceUsuarios.usuarioComNomeNulo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjetoTDD" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestPedidoService" />
-      <option name="METHOD_NAME" value="calculaPrecoTotalItens" />
+      <option name="MAIN_CLASS_NAME" value="TestServiceUsuarios" />
+      <option name="METHOD_NAME" value="usuarioComNomeNulo" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -110,11 +92,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestPedidoService" />
-        <item itemvalue="JUnit.TestPedidoService.calculaDescontoPorQuantidadesEUnidades" />
-        <item itemvalue="JUnit.TestPedidoService.calculaPrecoTotalItens" />
-        <item itemvalue="JUnit.TestPedidoService.calculaDescontoPorUnidades" />
-        <item itemvalue="JUnit.TestPedidoService.calculaDescontoPorQuantidadeDoItem" />
+        <item itemvalue="JUnit.TestServiceUsuarios" />
+        <item itemvalue="JUnit.TestServiceUsuarios.remocaoUsuarios" />
+        <item itemvalue="JUnit.TestServiceUsuarios.usuarioComEmailNulo" />
+        <item itemvalue="JUnit.TestServiceUsuarios.usuarioComNomeNulo" />
+        <item itemvalue="JUnit.TestServiceUsuarios.insercaoUsuariosSemRestricao" />
       </list>
     </recent_temporary>
   </component>
@@ -174,32 +156,32 @@
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state x="2096" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584284518030" />
-    <state width="1809" height="294" key="GridCell.Tab.0.bottom" timestamp="1584288261698">
+    <state width="1809" height="294" key="GridCell.Tab.0.bottom" timestamp="1584364615500">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1809" height="296" key="GridCell.Tab.0.bottom/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582217520526" />
-    <state width="1809" height="294" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584288261698" />
+    <state width="1809" height="294" key="GridCell.Tab.0.bottom/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584364615500" />
     <state width="1255" height="192" key="GridCell.Tab.0.bottom/65.24.1301.744@65.24.1301.744" timestamp="1583520297765" />
     <state width="1255" height="192" key="GridCell.Tab.0.bottom/65.24.3221.1056@65.24.3221.1056" timestamp="1583521704458" />
-    <state width="1809" height="294" key="GridCell.Tab.0.center" timestamp="1584288261698">
+    <state width="1809" height="294" key="GridCell.Tab.0.center" timestamp="1584364615500">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1809" height="296" key="GridCell.Tab.0.center/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582217520526" />
-    <state width="1809" height="294" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584288261698" />
+    <state width="1809" height="294" key="GridCell.Tab.0.center/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584364615500" />
     <state width="1255" height="192" key="GridCell.Tab.0.center/65.24.1301.744@65.24.1301.744" timestamp="1583520297765" />
     <state width="1255" height="192" key="GridCell.Tab.0.center/65.24.3221.1056@65.24.3221.1056" timestamp="1583521704456" />
-    <state width="1809" height="294" key="GridCell.Tab.0.left" timestamp="1584288261697">
+    <state width="1809" height="294" key="GridCell.Tab.0.left" timestamp="1584364615499">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1809" height="296" key="GridCell.Tab.0.left/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582217520526" />
-    <state width="1809" height="294" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584288261697" />
+    <state width="1809" height="294" key="GridCell.Tab.0.left/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584364615499" />
     <state width="1255" height="192" key="GridCell.Tab.0.left/65.24.1301.744@65.24.1301.744" timestamp="1583520297764" />
     <state width="1255" height="192" key="GridCell.Tab.0.left/65.24.3221.1056@65.24.3221.1056" timestamp="1583521704455" />
-    <state width="1809" height="294" key="GridCell.Tab.0.right" timestamp="1584288261698">
+    <state width="1809" height="294" key="GridCell.Tab.0.right" timestamp="1584364615500">
       <screen x="1366" y="0" width="1920" height="1080" />
     </state>
     <state width="1809" height="296" key="GridCell.Tab.0.right/0.312.1366.768/1366.0.1920.1080@1366.0.1920.1080" timestamp="1582217520526" />
-    <state width="1809" height="294" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584288261698" />
+    <state width="1809" height="294" key="GridCell.Tab.0.right/65.24.1301.744/1366.0.1920.1080@1366.0.1920.1080" timestamp="1584364615500" />
     <state width="1255" height="192" key="GridCell.Tab.0.right/65.24.1301.744@65.24.1301.744" timestamp="1583520297765" />
     <state width="1255" height="192" key="GridCell.Tab.0.right/65.24.3221.1056@65.24.3221.1056" timestamp="1583521704457" />
     <state width="1809" height="365" key="GridCell.Tab.1.bottom" timestamp="1582992810977">
