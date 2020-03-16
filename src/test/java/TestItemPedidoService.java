@@ -1,75 +1,71 @@
-import entity.ItemPedido;
 import cadastroexception.CadastroInvalidoException;
+import entity.ItemPedido;
+import entity.Produto;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import service.ItemPedidoService;
 import service.ProdutoService;
-import org.junit.Assert;
-import org.junit.Test;
 
 public class TestItemPedidoService {
 
+    private ProdutoService produtoService;
+    private ItemPedidoService itemPedidoService;
+
+    @Before
+    public void setup() {
+        produtoService = new ProdutoService();
+        itemPedidoService = new ItemPedidoService();
+    }
+
+    private ItemPedido itemPedido(int quantidade, Produto produto) {
+        return new ItemPedido(quantidade, produto);
+    }
+
     @Test
     public void adicionarItensPedido() throws CadastroInvalidoException {
-        ProdutoService produtoService = new ProdutoService();
-        ItemPedido itemPedido = new ItemPedido(1, produtoService.mockList().get(0));
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        itemPedidoService.addItemPedidoSvc(itemPedido);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
 
         Assert.assertEquals(1, itemPedidoService.itemPedidoList().size());
     }
 
     @Test
     public void removerItensPedido() throws CadastroInvalidoException {
-        ProdutoService produtoService = new ProdutoService();
-        ItemPedido itemPedido1 = new ItemPedido(1, produtoService.mockList().get(0));
-        ItemPedido itemPedido2 = new ItemPedido(1, produtoService.mockList().get(1));
-        ItemPedido itemPedido3 = new ItemPedido(1, produtoService.mockList().get(2));
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        itemPedidoService.addItemPedidoSvc(itemPedido1);
-        itemPedidoService.addItemPedidoSvc(itemPedido2);
-        itemPedidoService.addItemPedidoSvc(itemPedido3);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.hamburguer()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
 
-        itemPedidoService.removeItemPedidoSvc(itemPedido2);
+        itemPedidoService.removeItemPedidoSvc(itemPedidoService.itemPedidoList().get(0));
 
         Assert.assertEquals(2, itemPedidoService.itemPedidoList().size());
     }
 
     @Test
     public void adicionarQuantidade() throws CadastroInvalidoException {
-        ProdutoService produtoService = new ProdutoService();
-        ItemPedido itemPedido = new ItemPedido(1, produtoService.mockList().get(1));
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        itemPedidoService.addItemPedidoSvc(itemPedido);
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.hamburguer()));
+        itemPedidoService.addQuantidade(itemPedidoService.itemPedidoList().get(0), 4);
 
-        itemPedidoService.addQuantidade(itemPedido, 4);
-
-        Assert.assertEquals((Object) 5, itemPedidoService.itemPedidoList().get(0).getQuantidade());
+        Assert.assertEquals((Integer) 5, itemPedidoService.itemPedidoList().get(0).getQuantidade());
     }
 
     @Test
     public void removerQuantidade() throws CadastroInvalidoException {
-        ProdutoService produtoService = new ProdutoService();
-        ItemPedido itemPedido = new ItemPedido(5, produtoService.mockList().get(1));
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        itemPedidoService.addItemPedidoSvc(itemPedido);
+        itemPedidoService.addItemPedidoSvc(itemPedido(5, produtoService.hamburguer()));
+        itemPedidoService.removeQuantidade(itemPedidoService.itemPedidoList().get(0), 4);
 
-        itemPedidoService.removeQuantidade(itemPedido, 4);
-
-        Assert.assertEquals((Object) 1, itemPedidoService.itemPedidoList().get(0).getQuantidade());
+        Assert.assertEquals((Integer) 1, itemPedidoService.itemPedidoList().get(0).getQuantidade());
     }
 
     @Test
     public void totalItem() throws CadastroInvalidoException {
-        ProdutoService produtoService = new ProdutoService();
-        ItemPedido itemPedido = new ItemPedido(5, produtoService.mockList().get(1));
 
-        ItemPedidoService itemPedidoService = new ItemPedidoService();
-        itemPedidoService.addItemPedidoSvc(itemPedido);
+        itemPedidoService.addItemPedidoSvc(itemPedido(5, produtoService.bacon()));
 
-        Assert.assertEquals((Object) 10.0, itemPedidoService.getTotalItemSvc());
+        Assert.assertEquals((Double) 10.0, itemPedidoService.getTotalItemSvc());
     }
 
 }
