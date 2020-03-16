@@ -50,7 +50,7 @@ public class TestPedidoService {
         itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals((Object) 16.0, pedidoService.totalPedido(pedido));
+        Assert.assertEquals((Double) 16.0, pedidoService.totalPedido(pedido));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class TestPedidoService {
 
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals((Object) 10.16, pedidoService.totalPedido(pedido));
+        Assert.assertEquals((Double) 10.16, pedidoService.totalPedido(pedido));
     }
 
 
@@ -89,7 +89,7 @@ public class TestPedidoService {
 
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals((Object) 23.52, pedidoService.totalPedido(pedido));
+        Assert.assertEquals((Double) 23.52, pedidoService.totalPedido(pedido));
     }
 
 }
