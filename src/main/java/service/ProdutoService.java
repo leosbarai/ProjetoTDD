@@ -1,9 +1,9 @@
 package service;
 
-import entity.Produto;
 import cadastroexception.CadastroInvalidoException;
-import repository.ProdutoRepository;
 import cadastroexception.MotivoCadastroInvalido;
+import entity.Produto;
+import repository.ProdutoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,34 +51,6 @@ public class ProdutoService {
     public Produto azeitona() {
         return new Produto("010", "Azeitona", 0.50);
     }
-
-    public List<Produto> mockList() {
-        Produto alface = alface();
-        Produto bacon = bacon();
-        Produto hamburguer = hamburguer();
-        Produto ovo = ovo();
-        Produto queijo = queijo();
-        Produto pao = pao();
-        Produto maionese = maionese();
-        Produto mostarda = mostarda();
-        Produto catchup = catchup();
-        Produto azeitona = azeitona();
-
-        List<Produto> produtoList = new ArrayList<>();
-        produtoList.add(alface);
-        produtoList.add(bacon);
-        produtoList.add(hamburguer);
-        produtoList.add(ovo);
-        produtoList.add(queijo);
-        produtoList.add(pao);
-        produtoList.add(maionese);
-        produtoList.add(mostarda);
-        produtoList.add(catchup);
-        produtoList.add(azeitona);
-
-        return produtoList;
-    }
-
 
     public List<Produto> produtoList() {
         List<Produto> produtoList = new ArrayList<>();

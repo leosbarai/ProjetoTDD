@@ -1,10 +1,10 @@
-import entity.Produto;
-import org.junit.Before;
-import service.ProdutoService;
-import cadastroexception.MotivoCadastroInvalido;
-import org.junit.Assert;
-import org.junit.Test;
 import cadastroexception.CadastroInvalidoException;
+import cadastroexception.MotivoCadastroInvalido;
+import entity.Produto;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import service.ProdutoService;
 
 public class TestProdutoService {
 

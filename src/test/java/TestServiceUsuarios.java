@@ -1,9 +1,10 @@
-import entity.Usuario;
 import cadastroexception.CadastroInvalidoException;
-import org.junit.Before;
-import service.UsuarioService;
+import cadastroexception.MotivoCadastroInvalido;
+import entity.Usuario;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
+import service.UsuarioService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,12 +15,12 @@ public class TestServiceUsuarios {
     private Usuario usuario;
 
     @Before
-    public void setup(){
+    public void setup() {
         usuarioService = new UsuarioService();
         usuario = new Usuario();
     }
 
-    private Usuario addUsuario(String nome, String email){
+    private Usuario addUsuario(String nome, String email) {
         return new Usuario(nome, email);
     }
 
@@ -31,23 +32,38 @@ public class TestServiceUsuarios {
         Assert.assertEquals(usuario, usuarioService.getUsuarios().get(0));
     }
 
-    @Test(expected = CadastroInvalidoException.class)
+    @Test
     public void usuarioComNomeNulo() throws CadastroInvalidoException {
-        usuarioService.adicionaUsuarioSvc(usuario);
+
+        try {
+            usuarioService.adicionaUsuarioSvc(usuario);
+        } catch (CadastroInvalidoException e) {
+            Assert.assertEquals(MotivoCadastroInvalido.USUARIO_NULO, e.getMotivo());
+        }
     }
 
-    @Test(expected = CadastroInvalidoException.class)
+    @Test
     public void usuarioComEmailNulo() throws CadastroInvalidoException {
         usuario.setNome("João");
-        usuarioService.adicionaUsuarioSvc(usuario);
+
+        try {
+            usuarioService.adicionaUsuarioSvc(usuario);
+        } catch (CadastroInvalidoException e) {
+            Assert.assertEquals(MotivoCadastroInvalido.EMAIL_USUARIO_NULO, e.getMotivo());
+        }
     }
 
-    @Test(expected = CadastroInvalidoException.class)
+    @Test
     public void usuarioComEmailRepetido() throws CadastroInvalidoException {
-        usuario.setNome("João");
-        usuario.setEmail("joao@email.com");
+        usuario.setNome("Leonardo");
+        usuario.setEmail("leonardo@gmail.com");
 
-        usuarioService.adicionaUsuarioSvc(usuario);
+        try {
+            usuarioService.adicionaUsuarioSvc(usuario);
+        } catch (CadastroInvalidoException e) {
+            Assert.assertEquals(MotivoCadastroInvalido.EMAIL_USUARIO_EXISTENTE, e.getMotivo());
+        }
+
     }
 
     @Test
