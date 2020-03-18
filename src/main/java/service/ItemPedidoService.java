@@ -13,9 +13,7 @@ public class ItemPedidoService {
     private ItemPedidoRepository itemPedidoRepository = new ItemPedidoRepository();
 
     public List<ItemPedido> itemPedidoList() {
-        List<ItemPedido> itemPedidoList = new ArrayList<>();
-        itemPedidoList.addAll(itemPedidoRepository.getListaItens());
-        return itemPedidoList;
+        return itemPedidoRepository.getListaItens();
     }
 
     public void validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {

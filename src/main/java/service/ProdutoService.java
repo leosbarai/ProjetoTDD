@@ -53,9 +53,7 @@ public class ProdutoService {
     }
 
     public List<Produto> produtoList() {
-        List<Produto> produtoList = new ArrayList<>();
-        produtoList.addAll(produtoRepository.getListaProdutos());
-        return produtoList;
+        return produtoRepository.getListaProdutos();
     }
 
     public void validaProduto(Produto produto) throws CadastroInvalidoException {
