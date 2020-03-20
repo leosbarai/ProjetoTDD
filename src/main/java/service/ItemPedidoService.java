@@ -5,7 +5,6 @@ import cadastroexception.MotivoCadastroInvalido;
 import entity.ItemPedido;
 import repository.ItemPedidoRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ItemPedidoService {

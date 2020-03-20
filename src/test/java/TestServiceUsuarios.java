@@ -30,7 +30,7 @@ public class TestServiceUsuarios {
     }
 
     @Test
-    public void usuarioComNomeNulo() throws CadastroInvalidoException {
+    public void usuarioComNomeNulo() {
 
         try {
             usuarioService.adicionaUsuarioSvc(usuario);
@@ -40,7 +40,7 @@ public class TestServiceUsuarios {
     }
 
     @Test
-    public void usuarioComEmailNulo() throws CadastroInvalidoException {
+    public void usuarioComEmailNulo() {
         usuario.setNome("João");
 
         try {
@@ -51,7 +51,7 @@ public class TestServiceUsuarios {
     }
 
     @Test
-    public void usuarioComEmailRepetido() throws CadastroInvalidoException {
+    public void usuarioComEmailRepetido() {
         usuario.setNome("Leonardo");
         usuario.setEmail("leonardo@gmail.com");
 
