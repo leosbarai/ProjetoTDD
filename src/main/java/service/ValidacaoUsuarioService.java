@@ -10,9 +10,9 @@ public class ValidacaoUsuarioService {
     public void validaUsuario(Usuario usuario) throws CadastroInvalidoException {
 
         ValidaUsuarioService usuarioNulo = new ValidaUsuarioNulo();
-        ValidaUsuarioService emailNulo = new ValidaEmailUsuarioNulo();
+        ValidaUsuarioService emailNulo = new ValidaUsuarioEmailNulo();
         ValidaUsuarioService formatoEmail = new ValidaFormatoEmail();
-        ValidaUsuarioService emailExistente = new ValidaEmailExistente();
+        ValidaUsuarioService emailExistente = new ValidaUsuarioEmailExistente();
         ValidaUsuarioService usuarioValido = new UsuarioValidado();
 
         usuarioNulo.setProximaValidacao(emailNulo);

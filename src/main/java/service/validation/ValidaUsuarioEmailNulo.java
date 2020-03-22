@@ -4,7 +4,7 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Usuario;
 
-public class ValidaEmailUsuarioNulo implements ValidaUsuarioService {
+public class ValidaUsuarioEmailNulo implements ValidaUsuarioService {
 
     private ValidaUsuarioService proxima;
 
