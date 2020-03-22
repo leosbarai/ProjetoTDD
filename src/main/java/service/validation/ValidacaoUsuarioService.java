@@ -1,9 +1,7 @@
-package service;
+package service.validation;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Usuario;
-import service.validation.ValidaUsuarioService;
-import service.validation.*;
 
 public class ValidacaoUsuarioService {
 
@@ -13,7 +11,7 @@ public class ValidacaoUsuarioService {
         ValidaUsuarioService emailNulo = new ValidaUsuarioEmailNulo();
         ValidaUsuarioService formatoEmail = new ValidaUsuarioFormatoEmail();
         ValidaUsuarioService emailExistente = new ValidaUsuarioEmailExistente();
-        ValidaUsuarioService usuarioValido = new UsuarioValidado();
+        ValidaUsuarioService usuarioValido = new UsuarioValido();
 
         usuarioNulo.setProximaValidacao(emailNulo);
         emailNulo.setProximaValidacao(formatoEmail);

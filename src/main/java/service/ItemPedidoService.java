@@ -4,6 +4,7 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.ItemPedido;
 import repository.ItemPedidoRepository;
+import service.validation.ValidacaoItemPedidoService;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class ItemPedidoService {
     }
 
     public void addItemPedidoSvc(ItemPedido itemPedido) throws CadastroInvalidoException {
-        ValidacaoItemPedido validaCadastro = new ValidacaoItemPedido();
+        ValidacaoItemPedidoService validaCadastro = new ValidacaoItemPedidoService();
         validaCadastro.validaItemPedido(itemPedido);
         itemPedidoRepository.addItemPedido(itemPedido);
     }

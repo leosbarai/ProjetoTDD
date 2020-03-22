@@ -2,7 +2,6 @@ package service.validation;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Usuario;
-import service.ValidacaoUsuarioService;
 
 public interface ValidaUsuarioService {
 

@@ -3,7 +3,7 @@ package service.validation;
 import cadastroexception.CadastroInvalidoException;
 import entity.ItemPedido;
 
-public class ItemPedidoValidado implements ValidaItemPedidoService{
+public class ItemPedidoValido implements ValidaItemPedidoService{
 
     @Override
     public ItemPedido validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {

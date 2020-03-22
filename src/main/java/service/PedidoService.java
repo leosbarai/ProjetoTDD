@@ -5,6 +5,7 @@ import entity.ItemPedido;
 import entity.Pedido;
 import repository.PedidoRepository;
 import cadastroexception.CadastroInvalidoException;
+import service.validation.ValidacaoPedidoService;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,16 +19,9 @@ public class PedidoService {
         return pedidoRepository.getPedidoList();
     }
 
-    public void validaPedido(Pedido pedido) throws CadastroInvalidoException {
-        if (pedido.getUsuario() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.USUARIO_NULO_PEDIDO);
-        } else if (pedido.getItemPedidoList() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.PEDIDO_SEM_ITENS);
-        }
-    }
-
     public void adicionaPedido(Pedido pedido) throws CadastroInvalidoException {
-        validaPedido(pedido);
+        ValidacaoPedidoService validaCadastro = new ValidacaoPedidoService();
+        validaCadastro.validaPedido(pedido);
         pedidoRepository.addPedido(pedido);
     }
 

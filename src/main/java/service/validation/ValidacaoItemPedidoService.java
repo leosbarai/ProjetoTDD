@@ -1,17 +1,16 @@
-package service;
+package service.validation;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.ItemPedido;
-import service.validation.*;
 
-public class ValidacaoItemPedido {
+public class ValidacaoItemPedidoService {
 
     public void validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {
 
         ValidaItemPedidoService quantidadeNula = new ValidaItemPedidoQuantidadeNula();
         ValidaItemPedidoService quantidadeIncorreta = new ValidaItemPedidoQuantidadeIncorreta();
         ValidaItemPedidoService produtoNulo = new ValidaItemPedidoProdutoNulo();
-        ValidaItemPedidoService itemPedidoValido = new ItemPedidoValidado();
+        ValidaItemPedidoService itemPedidoValido = new ItemPedidoValido();
 
         quantidadeNula.setProximaValidacao(quantidadeIncorreta);
         quantidadeIncorreta.setProximaValidacao(produtoNulo);

@@ -3,7 +3,6 @@ package service.validation;
 import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Usuario;
-import service.ValidacaoUsuarioService;
 
 public class ValidaUsuarioNulo implements ValidaUsuarioService {
 

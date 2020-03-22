@@ -1,4 +1,4 @@
-package service;
+package service.validation;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Produto;
