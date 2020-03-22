@@ -11,7 +11,7 @@ public class ValidacaoUsuarioService {
 
         ValidaUsuarioService usuarioNulo = new ValidaUsuarioNulo();
         ValidaUsuarioService emailNulo = new ValidaUsuarioEmailNulo();
-        ValidaUsuarioService formatoEmail = new ValidaFormatoEmail();
+        ValidaUsuarioService formatoEmail = new ValidaUsuarioFormatoEmail();
         ValidaUsuarioService emailExistente = new ValidaUsuarioEmailExistente();
         ValidaUsuarioService usuarioValido = new UsuarioValidado();
 

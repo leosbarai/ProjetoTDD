@@ -15,18 +15,9 @@ public class ItemPedidoService {
         return itemPedidoRepository.getListaItens();
     }
 
-    public void validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {
-        if (itemPedido.getQuantidade() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.QUANTIDADE_ITEMPEDIDO_NULA);
-        } else if (itemPedido.getQuantidade() <= 0) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.QUANTIDADE_ITEMPEDIDO_INCORRETA);
-        } else if (itemPedido.getProduto() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_ITEMPEDIDO_NULO);
-        }
-    }
-
     public void addItemPedidoSvc(ItemPedido itemPedido) throws CadastroInvalidoException {
-        validaItemPedido(itemPedido);
+        ValidacaoItemPedido validaCadastro = new ValidacaoItemPedido();
+        validaCadastro.validaItemPedido(itemPedido);
         itemPedidoRepository.addItemPedido(itemPedido);
     }
 

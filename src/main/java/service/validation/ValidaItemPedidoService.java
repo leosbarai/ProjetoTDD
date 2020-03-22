@@ -1,11 +1,11 @@
 package service.validation;
 
 import cadastroexception.CadastroInvalidoException;
-import entity.Usuario;
+import entity.ItemPedido;
 
 public interface ValidaItemPedidoService {
 
-    Usuario validaUsuario(Usuario usuario) throws CadastroInvalidoException;
+    ItemPedido validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException;
 
     void setProximaValidacao(ValidaItemPedidoService proxima);
 }
