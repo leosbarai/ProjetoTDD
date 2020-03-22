@@ -11,8 +11,8 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository = new UsuarioRepository();
 
     public void adicionaUsuarioSvc(Usuario usuario) throws CadastroInvalidoException {
-        ValidaUsuarioService validaCadastro = new ValidaUsuarioService();
-        validaCadastro.validaCadastroUsuario(usuario);
+        ValidacaoUsuarioService validaCadastro = new ValidacaoUsuarioService();
+        validaCadastro.validaUsuario(usuario);
         usuarioRepository.addUsuario(usuario);
     }
 
