@@ -1,4 +1,4 @@
-package service.validation;
+package service.validation.order;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Pedido;
@@ -11,8 +11,8 @@ public class ValidacaoPedidoService {
         ValidaPedidoService pedidoUsuarioNulo = new ValidaPedidoUsuarioNulo();
         ValidaPedidoService pedidoValido = new PedidoValido();
 
-        pedidoSemItens.setProximaValidacao(pedidoUsuarioNulo);
-        pedidoUsuarioNulo.setProximaValidacao(pedidoValido);
-        pedidoSemItens.validaPedido(pedido);
+        pedidoUsuarioNulo.setProximaValidacao(pedidoSemItens);
+        pedidoSemItens.setProximaValidacao(pedidoValido);
+        pedidoUsuarioNulo.validaPedido(pedido);
     }
 }

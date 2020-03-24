@@ -1,4 +1,4 @@
-package service.validation;
+package service.validation.orderItem;
 
 import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;

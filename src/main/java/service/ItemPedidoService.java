@@ -4,7 +4,7 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.ItemPedido;
 import repository.ItemPedidoRepository;
-import service.validation.ValidacaoItemPedidoService;
+import service.validation.orderItem.ValidacaoItemPedidoService;
 
 import java.util.List;
 

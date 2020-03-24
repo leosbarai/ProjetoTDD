@@ -1,8 +1,7 @@
-package service.validation;
+package service.validation.product;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Produto;
-import service.validation.*;
 
 public class ValidacaoProdutoService {
 

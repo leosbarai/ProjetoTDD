@@ -1,11 +1,10 @@
 package service;
 
-import cadastroexception.MotivoCadastroInvalido;
+import cadastroexception.CadastroInvalidoException;
 import entity.ItemPedido;
 import entity.Pedido;
 import repository.PedidoRepository;
-import cadastroexception.CadastroInvalidoException;
-import service.validation.ValidacaoPedidoService;
+import service.validation.order.ValidacaoPedidoService;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -31,6 +30,7 @@ public class PedidoService {
 
     public Double totalPedido(Pedido pedido) {
         Double valorTotal = 0.0;
+        
         for (ItemPedido itemPedidoList : pedido.getItemPedidoList()) {
             if (pedido.getItemPedidoList().size() >= 10 && itemPedidoList.getQuantidade() < 5) {
                 valorTotal += itemPedidoList.getTotalItem() - (itemPedidoList.getTotalItem() * 0.05);

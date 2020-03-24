@@ -1,4 +1,4 @@
-package service.validation;
+package service.validation.order;
 
 import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
@@ -10,7 +10,7 @@ public class ValidaPedidoSemItens implements ValidaPedidoService {
 
     @Override
     public Pedido validaPedido(Pedido pedido) throws CadastroInvalidoException {
-        if (pedido.getItemPedidoList() == null) {
+        if (pedido.getItemPedidoList().size() == 0) {
             throw new CadastroInvalidoException(MotivoCadastroInvalido.PEDIDO_SEM_ITENS);
         } else {
             return proxima.validaPedido(pedido);

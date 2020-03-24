@@ -3,7 +3,7 @@ package service;
 import cadastroexception.CadastroInvalidoException;
 import entity.Usuario;
 import repository.UsuarioRepository;
-import service.validation.ValidacaoUsuarioService;
+import service.validation.user.ValidacaoUsuarioService;
 
 import java.util.List;
 

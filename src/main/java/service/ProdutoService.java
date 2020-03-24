@@ -3,7 +3,7 @@ package service;
 import cadastroexception.CadastroInvalidoException;
 import entity.Produto;
 import repository.ProdutoRepository;
-import service.validation.ValidacaoProdutoService;
+import service.validation.product.ValidacaoProdutoService;
 
 import java.util.List;
 
