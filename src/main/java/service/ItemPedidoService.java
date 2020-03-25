@@ -4,8 +4,8 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.ItemPedido;
 import repository.ItemPedidoRepository;
+import service.validation.orderItem.ValidacaoItemPedidoService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ItemPedidoService {
@@ -16,18 +16,9 @@ public class ItemPedidoService {
         return itemPedidoRepository.getListaItens();
     }
 
-    public void validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {
-        if (itemPedido.getQuantidade() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.QUANTIDADE_ITEMPEDIDO_NULA);
-        } else if (itemPedido.getQuantidade() <= 0) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.QUANTIDADE_ITEMPEDIDO_INCORRETA);
-        } else if (itemPedido.getProduto() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_ITEMPEDIDO_NULO);
-        }
-    }
-
     public void addItemPedidoSvc(ItemPedido itemPedido) throws CadastroInvalidoException {
-        validaItemPedido(itemPedido);
+        ValidacaoItemPedidoService validaCadastro = new ValidacaoItemPedidoService();
+        validaCadastro.validaItemPedido(itemPedido);
         itemPedidoRepository.addItemPedido(itemPedido);
     }
 

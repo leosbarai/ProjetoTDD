@@ -1,11 +1,10 @@
 package service;
 
 import cadastroexception.CadastroInvalidoException;
-import cadastroexception.MotivoCadastroInvalido;
 import entity.Produto;
 import repository.ProdutoRepository;
+import service.validation.product.ValidacaoProdutoService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ProdutoService {
@@ -56,24 +55,9 @@ public class ProdutoService {
         return produtoRepository.getListaProdutos();
     }
 
-    public void validaProduto(Produto produto) throws CadastroInvalidoException {
-        if (produto.getCodigo() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.CODIGO_PRODUTO_NULO);
-        } else if (produto.getDescricao() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.DESCRICAO_PRODUTO_NULA);
-        } else if (produto.getPrecoUnitario() == null) {
-            throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_SEM_PRECO);
-        } else {
-            for (Produto produtoLista : produtoList()) {
-                if (produto.getCodigo() == produtoLista.getCodigo()) {
-                    throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_EXISTENTE);
-                }
-            }
-        }
-    }
-
     public void addProdutoSvc(Produto produto) throws CadastroInvalidoException {
-        validaProduto(produto);
+        ValidacaoProdutoService validaCadastro = new ValidacaoProdutoService();
+        validaCadastro.validaProduto(produto);
         produtoRepository.addProdutos(produto);
     }
 

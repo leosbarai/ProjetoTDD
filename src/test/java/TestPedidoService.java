@@ -1,4 +1,5 @@
 import cadastroexception.CadastroInvalidoException;
+import cadastroexception.MotivoCadastroInvalido;
 import entity.ItemPedido;
 import entity.Pedido;
 import entity.Produto;
@@ -29,6 +30,41 @@ public class TestPedidoService {
 
     private ItemPedido itemPedido(int quantidade, Produto produto) {
         return new ItemPedido(quantidade, produto);
+    }
+
+    @Test
+    public void adicionaPedidoComUsuarioNulo() throws CadastroInvalidoException {
+        Pedido pedido1 = new Pedido();
+
+        try {
+            pedidoService.adicionaPedido(pedido1);
+        } catch (CadastroInvalidoException e) {
+            Assert.assertEquals(MotivoCadastroInvalido.USUARIO_NULO_PEDIDO, e.getMotivo());
+        }
+
+    }
+
+    @Test
+    public void adicionaPedidoSemItens() throws CadastroInvalidoException {
+
+        try {
+            pedidoService.adicionaPedido(pedido);
+        } catch (CadastroInvalidoException e) {
+            Assert.assertEquals(MotivoCadastroInvalido.PEDIDO_SEM_ITENS, e.getMotivo());
+        }
+
+    }
+
+    @Test
+    public void adicionaPedido() throws CadastroInvalidoException {
+
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.hamburguer()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
+        pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
+        pedidoService.adicionaPedido(pedido);
+
+        Assert.assertEquals(1, pedidoService.pedidoList().size());
     }
 
     @Test
