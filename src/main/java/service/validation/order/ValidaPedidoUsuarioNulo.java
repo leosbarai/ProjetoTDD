@@ -3,22 +3,23 @@ package service.validation.order;
 import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Pedido;
+import service.validation.ValidaCadastrosService;
 
-public class ValidaPedidoUsuarioNulo implements ValidaPedidoService {
+public class ValidaPedidoUsuarioNulo implements ValidaCadastrosService<Pedido> {
 
-    private ValidaPedidoService proxima;
+    private ValidaCadastrosService<Pedido> proxima;
 
     @Override
-    public Pedido validaPedido(Pedido pedido) throws CadastroInvalidoException {
+    public Pedido validaCadastros(Pedido pedido) throws CadastroInvalidoException {
         if (pedido.getUsuario() == null) {
             throw new CadastroInvalidoException(MotivoCadastroInvalido.USUARIO_NULO_PEDIDO);
         } else {
-            return proxima.validaPedido(pedido);
+            return proxima.validaCadastros(pedido);
         }
     }
 
     @Override
-    public void setProximaValidacao(ValidaPedidoService proxima) {
-        this.proxima = proxima;
+    public void setProximaValidacao(ValidaCadastrosService<Pedido> proximaValidacao) {
+        this.proxima = proximaValidacao;
     }
 }
