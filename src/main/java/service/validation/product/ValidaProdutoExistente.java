@@ -4,27 +4,28 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Produto;
 import service.ProdutoService;
+import service.validation.ValidaCadastrosService;
 
-public class ValidaProdutoExistente implements ValidaProdutoService {
+public class ValidaProdutoExistente implements ValidaCadastrosService<Produto> {
 
-    private ValidaProdutoService proxima;
+    private ValidaCadastrosService<Produto> proxima;
 
     @Override
-    public Produto validaProduto(Produto produto) throws CadastroInvalidoException {
+    public Produto validaCadastros(Produto produto) throws CadastroInvalidoException {
 
         ProdutoService produtoService = new ProdutoService();
 
         for (Produto produtoLista : produtoService.produtoList()) {
-            if (produto.getCodigo() == produtoLista.getCodigo()) {
+            if (produto.getCodigo().equals(produtoLista.getCodigo())) {
                 throw new CadastroInvalidoException(MotivoCadastroInvalido.PRODUTO_EXISTENTE);
             }
         }
 
-        return proxima.validaProduto(produto);
+        return proxima.validaCadastros(produto);
     }
 
     @Override
-    public void setProximaValidacao(ValidaProdutoService proxima) {
+    public void setProximaValidacao(ValidaCadastrosService<Produto> proxima) {
         this.proxima = proxima;
     }
 }

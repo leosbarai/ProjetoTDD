@@ -2,21 +2,22 @@ package service.validation.product;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Produto;
+import service.validation.ValidaCadastrosService;
 
 public class ValidacaoProdutoService {
 
     public void validaProduto(Produto produto) throws CadastroInvalidoException {
 
-        ValidaProdutoService codigoNulo = new ValidaProdutoCodigoNulo();
-        ValidaProdutoService descricaoNula = new ValidaProdutoDescricaoNula();
-        ValidaProdutoService precoNulo = new ValidaProdutoSemPreco();
-        ValidaProdutoService produtoExistente = new ValidaProdutoExistente();
-        ValidaProdutoService produtoValido = new ProdutoValido();
+        ValidaCadastrosService codigoNulo = new ValidaProdutoCodigoNulo();
+        ValidaCadastrosService descricaoNula = new ValidaProdutoDescricaoNula();
+        ValidaCadastrosService precoNulo = new ValidaProdutoSemPreco();
+        ValidaCadastrosService produtoExistente = new ValidaProdutoExistente();
+        ValidaCadastrosService produtoValido = new ProdutoValido();
 
         codigoNulo.setProximaValidacao(descricaoNula);
         descricaoNula.setProximaValidacao(precoNulo);
         precoNulo.setProximaValidacao(produtoExistente);
         produtoExistente.setProximaValidacao(produtoValido);
-        codigoNulo.validaProduto(produto);
+        codigoNulo.validaCadastros(produto);
     }
 }

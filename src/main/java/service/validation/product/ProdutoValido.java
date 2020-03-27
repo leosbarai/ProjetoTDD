@@ -1,18 +1,17 @@
 package service.validation.product;
 
-import cadastroexception.CadastroInvalidoException;
 import entity.Produto;
-import service.validation.product.ValidaProdutoService;
+import service.validation.ValidaCadastrosService;
 
-public class ProdutoValido implements ValidaProdutoService {
+public class ProdutoValido implements ValidaCadastrosService<Produto> {
 
     @Override
-    public Produto validaProduto(Produto produto) throws CadastroInvalidoException {
+    public Produto validaCadastros(Produto produto) {
         return produto;
     }
 
     @Override
-    public void setProximaValidacao(ValidaProdutoService proxima) {
+    public void setProximaValidacao(ValidaCadastrosService<Produto> proxima) {
 
     }
 }

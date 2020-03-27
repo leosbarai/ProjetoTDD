@@ -3,23 +3,24 @@ package service.validation.user;
 import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Usuario;
+import service.validation.ValidaCadastrosService;
 
-public class ValidaUsuarioNulo implements ValidaUsuarioService {
+public class ValidaUsuarioNulo implements ValidaCadastrosService<Usuario> {
 
-    private ValidaUsuarioService proxima;
+    private ValidaCadastrosService<Usuario> proxima;
 
     @Override
-    public Usuario validaUsuario(Usuario usuario) throws CadastroInvalidoException {
+    public Usuario validaCadastros(Usuario usuario) throws CadastroInvalidoException {
 
         if (usuario.getNome() == null) {
             throw new CadastroInvalidoException(MotivoCadastroInvalido.USUARIO_NULO);
         } else {
-            return proxima.validaUsuario(usuario);
+            return proxima.validaCadastros(usuario);
         }
     }
 
     @Override
-    public void setProximaValidacao(ValidaUsuarioService proxima) {
+    public void setProximaValidacao(ValidaCadastrosService<Usuario> proxima) {
         this.proxima = proxima;
     }
 }

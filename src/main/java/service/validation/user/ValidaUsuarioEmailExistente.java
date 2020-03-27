@@ -4,26 +4,27 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Usuario;
 import service.UsuarioService;
+import service.validation.ValidaCadastrosService;
 
-public class ValidaUsuarioEmailExistente implements ValidaUsuarioService {
+public class ValidaUsuarioEmailExistente implements ValidaCadastrosService<Usuario> {
 
-    private ValidaUsuarioService proxima;
+    private ValidaCadastrosService<Usuario> proxima;
 
     @Override
-    public Usuario validaUsuario(Usuario usuario) throws CadastroInvalidoException {
+    public Usuario validaCadastros(Usuario usuario) throws CadastroInvalidoException {
 
         UsuarioService usuarioService = new UsuarioService();
 
         for (Usuario usuariosList : usuarioService.getUsuarios()) {
-            if (usuario.getEmail() == usuariosList.getEmail())
+            if (usuario.getEmail().equals(usuariosList.getEmail()))
                 throw new CadastroInvalidoException(MotivoCadastroInvalido.EMAIL_USUARIO_EXISTENTE);
         }
 
-        return proxima.validaUsuario(usuario);
+        return proxima.validaCadastros(usuario);
     }
 
     @Override
-    public void setProximaValidacao(ValidaUsuarioService proxima) {
+    public void setProximaValidacao(ValidaCadastrosService<Usuario> proxima) {
         this.proxima = proxima;
     }
 }

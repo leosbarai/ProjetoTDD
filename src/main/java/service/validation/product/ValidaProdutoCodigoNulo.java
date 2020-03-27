@@ -3,22 +3,23 @@ package service.validation.product;
 import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.Produto;
+import service.validation.ValidaCadastrosService;
 
-public class ValidaProdutoCodigoNulo implements ValidaProdutoService {
+public class ValidaProdutoCodigoNulo implements ValidaCadastrosService<Produto> {
 
-    ValidaProdutoService proxima;
+    private ValidaCadastrosService<Produto> proxima;
 
     @Override
-    public Produto validaProduto(Produto produto) throws CadastroInvalidoException {
+    public Produto validaCadastros(Produto produto) throws CadastroInvalidoException {
         if (produto.getCodigo() == null) {
             throw new CadastroInvalidoException(MotivoCadastroInvalido.CODIGO_PRODUTO_NULO);
         } else {
-            return proxima.validaProduto(produto);
+            return proxima.validaCadastros(produto);
         }
     }
 
     @Override
-    public void setProximaValidacao(ValidaProdutoService proxima) {
+    public void setProximaValidacao(ValidaCadastrosService<Produto> proxima) {
         this.proxima = proxima;
     }
 }

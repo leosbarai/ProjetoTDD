@@ -1,17 +1,17 @@
 package service.validation.orderItem;
 
-import cadastroexception.CadastroInvalidoException;
 import entity.ItemPedido;
+import service.validation.ValidaCadastrosService;
 
-public class ItemPedidoValido implements ValidaItemPedidoService{
+public class ItemPedidoValido implements ValidaCadastrosService<ItemPedido> {
 
     @Override
-    public ItemPedido validaItemPedido(ItemPedido itemPedido) throws CadastroInvalidoException {
+    public ItemPedido validaCadastros(ItemPedido itemPedido) {
         return itemPedido;
     }
 
     @Override
-    public void setProximaValidacao(ValidaItemPedidoService proxima) {
+    public void setProximaValidacao(ValidaCadastrosService<ItemPedido> proxima) {
 
     }
 }
