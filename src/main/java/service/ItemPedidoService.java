@@ -28,7 +28,7 @@ public class ItemPedidoService {
 
     public void addQuantidade(ItemPedido itemPedido, Integer qtd) {
         for (ItemPedido x : itemPedidoRepository.getListaItens()) {
-            if (x.getProduto() == itemPedido.getProduto()) {
+            if (x.getProduto().equals(itemPedido.getProduto())) {
                 x.setQuantidade(x.getQuantidade() + qtd);
             }
         }
@@ -36,7 +36,7 @@ public class ItemPedidoService {
 
     public void removeQuantidade(ItemPedido itemPedido, Integer qtd) throws CadastroInvalidoException {
         for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
-            if (itemPedidoList.getProduto() == itemPedido.getProduto()) {
+            if (itemPedidoList.getProduto().equals(itemPedido.getProduto())) {
                 if (itemPedidoList.getQuantidade() > qtd) {
                     itemPedidoList.setQuantidade(itemPedidoList.getQuantidade() - qtd);
                 } else {
