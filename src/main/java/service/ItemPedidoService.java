@@ -27,11 +27,7 @@ public class ItemPedidoService {
     }
 
     public void addQuantidade(ItemPedido itemPedido, Integer qtd) {
-        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
-            if (x.getProduto().equals(itemPedido.getProduto())) {
-                x.setQuantidade(x.getQuantidade() + qtd);
-            }
-        }
+        itemPedidoRepository.getListaItens().stream().filter(x -> x.getProduto().equals(itemPedido.getProduto())).forEach(x -> x.setQuantidade(x.getQuantidade() + qtd));
     }
 
     public void removeQuantidade(ItemPedido itemPedido, Integer qtd) throws CadastroInvalidoException {
@@ -47,10 +43,6 @@ public class ItemPedidoService {
     }
 
     public Double getTotalItemSvc() {
-        Double total = 0.0;
-        for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
-            total += itemPedidoList.getTotalItem();
-        }
-        return total;
+        return itemPedidoRepository.getListaItens().stream().mapToDouble(ItemPedido::getTotalItem).sum();
     }
 }

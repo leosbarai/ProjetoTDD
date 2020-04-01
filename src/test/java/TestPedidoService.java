@@ -114,9 +114,9 @@ public class TestPedidoService {
 
         itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.pao()));
         itemPedidoService.addItemPedidoSvc(itemPedido(6, produtoService.hamburguer()));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.queijo()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(2, produtoService.queijo()));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.alface()));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.bacon()));
+        itemPedidoService.addItemPedidoSvc(itemPedido(2, produtoService.bacon()));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.ovo()));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.maionese()));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, produtoService.mostarda()));
@@ -125,7 +125,7 @@ public class TestPedidoService {
 
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals((Double) 23.52, pedidoService.totalPedido(pedido));
+        Assert.assertEquals((Double) 25.94, pedidoService.totalPedido(pedido));
     }
 
 }
