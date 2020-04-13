@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import service.ProdutoService;
 
+import java.math.BigDecimal;
+
 public class TestProdutoService {
 
     private ProdutoService produtoService;
@@ -17,16 +19,16 @@ public class TestProdutoService {
         produto = new Produto();
     }
 
-    private Produto produto(String codigo, String descricao, Double preco) {
+    private Produto produto(String codigo, String descricao, BigDecimal preco) {
         return new Produto(codigo, descricao, preco);
     }
 
     @Test
     public void adicionaProdutos() throws CadastroInvalidoException {
 
-        produtoService.addProdutoSvc(produto("001", "Bacon", 1.50));
+        produtoService.addProdutoSvc(produto("001", "Bacon", new BigDecimal(1.50)));
 
-        Assert.assertEquals(produtoService.produtoList().get(0).getDescricao(), produtoService.bacon().getDescricao());
+        Assert.assertEquals(produtoService.produtoList().get(0).getDescricao(), new Produto("002", "Bacon", new BigDecimal(2.00)).getDescricao());
     }
 
     @Test
@@ -42,7 +44,7 @@ public class TestProdutoService {
     }
 
     @Test
-    public void produtoComDescricaoNula() throws CadastroInvalidoException {
+    public void produtoComDescricaoNula() {
 
         produto.setCodigo("001");
 
@@ -55,7 +57,7 @@ public class TestProdutoService {
     }
 
     @Test
-    public void produtoSemPreco() throws CadastroInvalidoException {
+    public void produtoSemPreco() {
 
         produto.setCodigo("001");
         produto.setDescricao("Bacon");
@@ -69,11 +71,11 @@ public class TestProdutoService {
     }
 
     @Test
-    public void produtoComCodigoRepetido() throws CadastroInvalidoException {
+    public void produtoComCodigoRepetido() {
 
         try {
-            produtoService.addProdutoSvc(produto("001", "Bacon", 1.50));
-            produtoService.addProdutoSvc(produto("001", "Alface", 1.00));
+            produtoService.addProdutoSvc(produto("001", "Bacon", new BigDecimal(1.50)));
+            produtoService.addProdutoSvc(produto("001", "Alface", new BigDecimal(1.00)));
         } catch (CadastroInvalidoException e) {
             Assert.assertEquals(MotivoCadastroInvalido.PRODUTO_EXISTENTE, e.getMotivo());
         }

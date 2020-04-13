@@ -1,5 +1,7 @@
 package entity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Objects;
 
 public class ItemPedido {
@@ -31,8 +33,10 @@ public class ItemPedido {
         this.produto = produto;
     }
 
-    public Double getTotalItem(){
-        return this.produto.getPrecoUnitario() * this.quantidade;
+    public BigDecimal getTotalItem(){
+        BigDecimal valor;
+        valor = this.produto.getPrecoUnitario().multiply(BigDecimal.valueOf(this.quantidade)).setScale(2, RoundingMode.HALF_EVEN);
+        return valor;
     }
 
     @Override

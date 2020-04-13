@@ -6,6 +6,7 @@ import entity.ItemPedido;
 import repository.ItemPedidoRepository;
 import service.validation.orderItem.ValidacaoItemPedidoService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ItemPedidoService {
@@ -42,7 +43,7 @@ public class ItemPedidoService {
         }
     }
 
-    public Double getTotalItemSvc() {
-        return itemPedidoRepository.getListaItens().stream().mapToDouble(ItemPedido::getTotalItem).sum();
+    public BigDecimal getTotalItemSvc() {
+        return itemPedidoRepository.getListaItens().stream().map(ItemPedido::getTotalItem).reduce(BigDecimal::add).get();
     }
 }

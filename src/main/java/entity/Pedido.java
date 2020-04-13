@@ -9,7 +9,7 @@ public class Pedido {
 
     private Usuario usuario;
     private List<ItemPedido> itemPedidoList = new ArrayList<>();
-    private Double totalPedido;
+    private BigDecimal totalPedido = BigDecimal.ZERO;
 
     public Pedido() {
     }
@@ -30,11 +30,11 @@ public class Pedido {
         return itemPedidoList;
     }
 
-    public Double getTotalPedido() {
+    public BigDecimal getTotalPedido() {
         return totalPedido;
     }
 
-    public void setTotalPedido(Double totalPedido) {
+    public void setTotalPedido(BigDecimal totalPedido) {
         this.totalPedido = totalPedido;
     }
 
@@ -43,8 +43,10 @@ public class Pedido {
     }
 
     public void calculaTotal() {
-        BigDecimal totalPedido = new BigDecimal(itemPedidoList.stream().mapToDouble(ItemPedido::getTotalItem).sum()).setScale(2, RoundingMode.HALF_EVEN);
-        setTotalPedido(totalPedido.doubleValue());
+        BigDecimal valorTotal;
+        valorTotal = itemPedidoList.stream().map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totalPedido = valorTotal.setScale(2, RoundingMode.HALF_EVEN);
+        setTotalPedido(totalPedido);
     }
 
 }

@@ -14,15 +14,15 @@ public class DescontoMaiorIgualDezItens implements Desconto {
 
     @Override
     public Pedido aplicaDesconto(Pedido pedido, Promocao promocao) {
-        Double totalItem = 0.0;
+        BigDecimal totalItem = BigDecimal.ZERO;
+        BigDecimal percentualDesconto = new BigDecimal(0.05);
 
         if (pedido.getItemPedidoList().size() >= 10) {
-            totalItem = pedido.getItemPedidoList().stream().mapToDouble(ItemPedido::getTotalItem).sum();
+            totalItem = pedido.getItemPedidoList().stream().map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add);
         }
 
-        BigDecimal desconto = new BigDecimal(totalItem * 0.05).setScale(2, RoundingMode.HALF_EVEN);
-        promocao.setDesconto(desconto.doubleValue());
-
+        BigDecimal desconto = totalItem.multiply(percentualDesconto).setScale(2, RoundingMode.HALF_EVEN);
+        promocao.setDesconto(desconto);
         return this.desconto.aplicaDesconto(pedido, promocao);
     }
 

@@ -1,17 +1,18 @@
 package entity;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 public class Produto {
 
     private String codigo;
     private String descricao;
-    private Double precoUnitario;
+    private BigDecimal precoUnitario;
 
     public Produto() {
     }
 
-    public Produto(String codigo, String descricao, Double precoUnitario) {
+    public Produto(String codigo, String descricao, BigDecimal precoUnitario) {
         this.codigo = codigo;
         this.descricao = descricao;
         this.precoUnitario = precoUnitario;
@@ -33,11 +34,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Double getPrecoUnitario() {
+    public BigDecimal getPrecoUnitario() {
         return precoUnitario;
     }
 
-    public void setPrecoUnitario(Double precoUnitario) {
+    public void setPrecoUnitario(BigDecimal precoUnitario) {
         this.precoUnitario = precoUnitario;
     }
 

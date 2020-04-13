@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
+
+# Another
 target/
+pom.xml
 
 # Log file
 *.log

@@ -3,11 +3,14 @@ package service.promotion;
 import entity.Pedido;
 import entity.Promocao;
 
+import java.math.BigDecimal;
+
 public class SemDesconto implements Desconto {
 
     @Override
     public Pedido aplicaDesconto(Pedido pedido, Promocao promocao) {
-        promocao.setDesconto(0.0);
+        BigDecimal totalItem = BigDecimal.ZERO;
+        promocao.setDesconto(totalItem);
         return pedido;
     }
 

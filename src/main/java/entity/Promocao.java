@@ -1,19 +1,21 @@
 package entity;
 
+import java.math.BigDecimal;
+
 public class Promocao {
 
-    private Double desconto;
+    private BigDecimal desconto;
 
     public Promocao() {
-        this.desconto = 0.0;
+        this.desconto = BigDecimal.ZERO;
     }
 
-    public Double getDesconto() {
+    public BigDecimal getDesconto() {
         return desconto;
     }
 
-    public void setDesconto(Double desconto) {
-        this.desconto += desconto;
+    public void setDesconto(BigDecimal desconto) {
+        this.desconto = this.desconto.add(desconto);
     }
 
 }

@@ -13,12 +13,13 @@ public class DescontoQuantidadeMaiorIgualACinco implements Desconto {
 
     @Override
     public Pedido aplicaDesconto(Pedido pedido, Promocao promocao) {
-        Double totalItem = 0.0;
+        BigDecimal totalItem;
+        BigDecimal percentualDesconto = new BigDecimal(0.10).setScale(2, RoundingMode.HALF_EVEN);
 
-        totalItem = pedido.getItemPedidoList().stream().filter(x -> x.getQuantidade() >= 5).mapToDouble(ItemPedido::getTotalItem).sum();
+        totalItem = pedido.getItemPedidoList().stream().filter(itemPedido -> itemPedido.getQuantidade() >= 5).map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        BigDecimal desconto = new BigDecimal(totalItem * 0.1).setScale(2, RoundingMode.HALF_EVEN);
-        promocao.setDesconto(desconto.doubleValue());
+        BigDecimal desconto = totalItem.multiply(percentualDesconto).setScale(2, RoundingMode.HALF_EVEN);
+        promocao.setDesconto(desconto);
 
         return this.desconto.aplicaDesconto(pedido, promocao);
     }

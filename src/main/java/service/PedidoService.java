@@ -25,7 +25,7 @@ public class PedidoService {
         pedidoRepository.addPedido(pedido);
     }
 
-    public Double aplicaDesconto(Pedido pedido) {
+    public BigDecimal aplicaDesconto(Pedido pedido) {
         Promocao promocao = new Promocao();
         ValidaDesconto desconto = new ValidaDesconto();
         desconto.aplicaDesconto(pedido, promocao);
@@ -36,10 +36,12 @@ public class PedidoService {
         pedidoRepository.removePedido(pedido);
     }
 
-    public Double totalPedido(Pedido pedido) {
+    public BigDecimal totalPedido(Pedido pedido) {
+        BigDecimal valorTotal, desconto;
         pedido.calculaTotal();
-        BigDecimal totalComDesconto = new BigDecimal(pedido.getTotalPedido() - aplicaDesconto(pedido)).setScale(2, RoundingMode.HALF_EVEN);
-        return totalComDesconto.doubleValue();
+        valorTotal = pedido.getTotalPedido().subtract(aplicaDesconto(pedido));
+        BigDecimal totalComDesconto = valorTotal.setScale(2, RoundingMode.HALF_EVEN);
+        return totalComDesconto;
     }
 
 }
