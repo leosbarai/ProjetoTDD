@@ -40,8 +40,7 @@ public class PedidoService {
         BigDecimal valorTotal, desconto;
         pedido.calculaTotal();
         valorTotal = pedido.getTotalPedido().subtract(aplicaDesconto(pedido));
-        BigDecimal totalComDesconto = valorTotal.setScale(2, RoundingMode.HALF_EVEN);
-        return totalComDesconto;
+        return valorTotal.setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }
