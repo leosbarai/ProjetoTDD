@@ -37,10 +37,8 @@ public class PedidoService {
     }
 
     public BigDecimal totalPedido(Pedido pedido) {
-        BigDecimal valorTotal, desconto;
         pedido.calculaTotal();
-        valorTotal = pedido.getTotalPedido().subtract(aplicaDesconto(pedido));
-        return valorTotal.setScale(2, RoundingMode.HALF_EVEN);
+        return pedido.getTotalPedido().subtract(aplicaDesconto(pedido)).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

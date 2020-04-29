@@ -34,19 +34,14 @@ public class Pedido {
         return totalPedido;
     }
 
-    public void setTotalPedido(BigDecimal totalPedido) {
-        this.totalPedido = totalPedido;
-    }
-
     public void setItemPedidoList(List<ItemPedido> itemPedidoList) {
         this.itemPedidoList = itemPedidoList;
     }
 
     public void calculaTotal() {
-        BigDecimal valorTotal;
-        valorTotal = itemPedidoList.stream().map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalPedido = valorTotal.setScale(2, RoundingMode.HALF_EVEN);
-        setTotalPedido(totalPedido);
+        this.totalPedido  = itemPedidoList.stream()
+                .map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

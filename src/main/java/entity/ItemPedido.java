@@ -34,9 +34,7 @@ public class ItemPedido {
     }
 
     public BigDecimal getTotalItem(){
-        BigDecimal valor;
-        valor = this.produto.getPrecoUnitario().multiply(BigDecimal.valueOf(this.quantidade)).setScale(2, RoundingMode.HALF_EVEN);
-        return valor;
+        return this.produto.getPrecoUnitario().multiply(BigDecimal.valueOf(this.quantidade)).setScale(2, RoundingMode.HALF_EVEN);
     }
 
     @Override
