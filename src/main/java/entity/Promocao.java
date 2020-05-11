@@ -19,18 +19,15 @@ public class Promocao {
     }
 
     public Boolean isLight(Pedido pedido) {
-        for (ItemPedido itemPedidoAlface : pedido.getItemPedidoList()) {
-            if (itemPedidoAlface.getProduto().getDescricao().equals("Alface")) {
-                for (ItemPedido itemPedidoBacon : pedido.getItemPedidoList()) {
-                    if (itemPedidoBacon.getProduto().getDescricao().equals("Bacon")) {
-                        return false;
-                    }
-                }
-
+        if (pedido.getItemPedidoList().stream().anyMatch(itemPedido -> itemPedido.getProduto().getDescricao().equals("Alface"))) {
+            if (pedido.getItemPedidoList().stream().anyMatch(itemPedido -> itemPedido.getProduto().getDescricao().equals("Bacon"))) {
+                return false;
+            } else {
                 return true;
             }
+        } else {
+            return false;
         }
-        return false;
     }
 
     public Boolean isMuitaCarne(Pedido pedido) {
@@ -60,12 +57,6 @@ public class Promocao {
     }
 
     public Boolean isGordao(Pedido pedido) {
-        for (ItemPedido itemPedido : pedido.getItemPedidoList()) {
-            if (itemPedido.getQuantidade() >= 5) {
-                return true;
-            }
-        }
-
-        return false;
+        return pedido.getItemPedidoList().stream().anyMatch(itemPedido -> itemPedido.getQuantidade() >= 5);
     }
 }
