@@ -79,18 +79,63 @@ public class TestPedidoService {
     }
 
     @Test
-    public void calculaDescontoPorQuantidadeDoItem() throws CadastroInvalidoException {
+    public void promocaoLight() throws CadastroInvalidoException {
 
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(5, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("005", "Queijo", new BigDecimal(1.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("001", "Alface", new BigDecimal(0.40))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("004", "Ovo", new BigDecimal(0.80))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("007", "Maionese", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("008", "Mostarda", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("009", "Catchup", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("010", "Azeitona", new BigDecimal(0.50))));
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals(new BigDecimal(16.00).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
+        Assert.assertEquals(new BigDecimal(7.83).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
     }
 
     @Test
-    public void calculaDescontoPorUnidades() throws CadastroInvalidoException {
+    public void promocaoMuitaCarne() throws CadastroInvalidoException {
+
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(9, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("005", "Queijo", new BigDecimal(1.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("001", "Alface", new BigDecimal(0.40))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("002", "Bacon", new BigDecimal(2.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("004", "Ovo", new BigDecimal(0.80))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("007", "Maionese", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("008", "Mostarda", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("009", "Catchup", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("010", "Azeitona", new BigDecimal(0.50))));
+
+        pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
+
+        Assert.assertEquals(new BigDecimal(25.70).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
+    }
+
+
+    @Test
+    public void promocaoMuitoQueijo() throws CadastroInvalidoException {
+
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(6, new Produto("005", "Queijo", new BigDecimal(1.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("001", "Alface", new BigDecimal(0.40))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("002", "Bacon", new BigDecimal(2.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("004", "Ovo", new BigDecimal(0.80))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("007", "Maionese", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("008", "Mostarda", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("009", "Catchup", new BigDecimal(0.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("010", "Azeitona", new BigDecimal(0.50))));
+
+        pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
+
+        Assert.assertEquals(new BigDecimal(15.20).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
+    }
+
+    @Test
+    public void promocaoBruto() throws CadastroInvalidoException {
 
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
@@ -108,24 +153,33 @@ public class TestPedidoService {
         Assert.assertEquals(new BigDecimal(10.16).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
     }
 
-
     @Test
-    public void calculaDescontoPorQuantidadesEUnidades() throws CadastroInvalidoException {
+    public void promocaoGordao() throws CadastroInvalidoException {
 
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(6, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(2, new Produto("005", "Queijo", new BigDecimal(1.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("005", "Queijo", new BigDecimal(1.50))));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("001", "Alface", new BigDecimal(0.40))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(2, new Produto("002", "Bacon", new BigDecimal(2.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(6, new Produto("002", "Bacon", new BigDecimal(2.00))));
         itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("004", "Ovo", new BigDecimal(0.80))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("007", "Maionese", new BigDecimal(0.50))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("008", "Mostarda", new BigDecimal(0.50))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("009", "Catchup", new BigDecimal(0.50))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("010", "Azeitona", new BigDecimal(0.50))));
 
         pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
 
-        Assert.assertEquals(new BigDecimal(25.94).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
+        Assert.assertEquals(new BigDecimal(16.83).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
     }
 
+    @Test
+    public void semPromocao() throws CadastroInvalidoException {
+
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("005", "Queijo", new BigDecimal(1.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("001", "Alface", new BigDecimal(0.40))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("002", "Bacon", new BigDecimal(2.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("004", "Ovo", new BigDecimal(0.80))));
+
+        pedido.setItemPedidoList(itemPedidoService.itemPedidoList());
+
+        Assert.assertEquals(new BigDecimal(8.70).setScale(2, RoundingMode.HALF_EVEN), pedidoService.totalPedido(pedido));
+    }
 }

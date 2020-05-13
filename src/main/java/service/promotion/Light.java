@@ -10,7 +10,7 @@ public class Light implements Desconto {
     @Override
     public BigDecimal getDesconto(Pedido pedido) {
         BigDecimal percentualDesconto = new BigDecimal(0.10);
-        BigDecimal valor = pedido.getTotalPedido().multiply(percentualDesconto).setScale(2, RoundingMode.HALF_EVEN);
-        return valor;
+
+        return pedido.getTotalPedido().multiply(percentualDesconto).setScale(2, RoundingMode.HALF_EVEN);
     }
 }

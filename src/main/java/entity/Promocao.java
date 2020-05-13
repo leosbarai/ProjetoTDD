@@ -10,14 +10,6 @@ public class Promocao {
         this.desconto = BigDecimal.ZERO;
     }
 
-    public BigDecimal getDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(BigDecimal desconto) {
-        this.desconto = this.desconto.add(desconto);
-    }
-
     public Boolean isLight(Pedido pedido) {
         if (pedido.getItemPedidoList().stream().anyMatch(itemPedido -> itemPedido.getProduto().getDescricao().equals("Alface"))) {
             if (pedido.getItemPedidoList().stream().anyMatch(itemPedido -> itemPedido.getProduto().getDescricao().equals("Bacon"))) {
