@@ -1,11 +1,9 @@
 package service.promotion;
 
 import entity.Pedido;
-import entity.Promocao;
+
+import java.math.BigDecimal;
 
 public interface Desconto {
-
-    Pedido aplicaDesconto(Pedido pedido, Promocao promocao);
-
-    void setProximoDesconto(Desconto proxima);
+    BigDecimal getDesconto(Pedido pedido);
 }

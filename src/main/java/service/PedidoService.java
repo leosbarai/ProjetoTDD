@@ -2,9 +2,9 @@ package service;
 
 import cadastroexception.CadastroInvalidoException;
 import entity.Pedido;
-import entity.Promocao;
 import repository.PedidoRepository;
-import service.promotion.ValidaDesconto;
+import service.promotion.Desconto;
+import service.promotion.PromocaoFactory;
 import service.validation.order.ValidacaoPedidoService;
 
 import java.math.BigDecimal;
@@ -26,10 +26,8 @@ public class PedidoService {
     }
 
     public BigDecimal aplicaDesconto(Pedido pedido) {
-        Promocao promocao = new Promocao();
-        ValidaDesconto desconto = new ValidaDesconto();
-        desconto.aplicaDesconto(pedido, promocao);
-        return promocao.getDesconto();
+        Desconto valorDesconto = PromocaoFactory.desconto(pedido);
+        return valorDesconto.getDesconto(pedido);
     }
 
     public void removeItemPedido(Pedido pedido) {

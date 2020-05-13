@@ -5,14 +5,13 @@ import entity.Pedido;
 
 import java.math.BigDecimal;
 
-public class MuitaCarne implements Desconto {
-
+public class MuitoQueijo implements Desconto {
     @Override
     public BigDecimal getDesconto(Pedido pedido) {
         int quantidade = 0;
 
         for (ItemPedido itemPedido : pedido.getItemPedidoList()) {
-            if (itemPedido.getProduto().getDescricao().equals("Hamburguer de carne")) {
+            if (itemPedido.getProduto().getDescricao().equals("Queijo")) {
                 quantidade = itemPedido.getQuantidade() / 3;
             }
 
