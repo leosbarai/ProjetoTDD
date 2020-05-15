@@ -1,9 +1,10 @@
 package service;
 
 import cadastroexception.CadastroInvalidoException;
-import entity.ItemPedido;
 import entity.Pedido;
 import repository.PedidoRepository;
+import service.promotion.Desconto;
+import service.promotion.PromocaoFactory;
 import service.validation.order.ValidacaoPedidoService;
 
 import java.math.BigDecimal;
@@ -24,25 +25,18 @@ public class PedidoService {
         pedidoRepository.addPedido(pedido);
     }
 
+    public BigDecimal aplicaDesconto(Pedido pedido) {
+        Desconto valorDesconto = PromocaoFactory.desconto(pedido);
+        return valorDesconto.getDesconto(pedido);
+    }
+
     public void removeItemPedido(Pedido pedido) {
         pedidoRepository.removePedido(pedido);
     }
 
-    public Double totalPedido(Pedido pedido) {
-        Double valorTotal = 0.0;
-        
-        for (ItemPedido itemPedidoList : pedido.getItemPedidoList()) {
-            if (pedido.getItemPedidoList().size() >= 10 && itemPedidoList.getQuantidade() < 5) {
-                valorTotal += itemPedidoList.getTotalItem() - (itemPedidoList.getTotalItem() * 0.05);
-            } else if (itemPedidoList.getQuantidade() >= 5) {
-                valorTotal += itemPedidoList.getTotalItem() - (itemPedidoList.getTotalItem() * 0.10);
-            } else {
-                valorTotal += itemPedidoList.getTotalItem();
-            }
-        }
-
-        BigDecimal total = new BigDecimal(valorTotal).setScale(2, RoundingMode.HALF_EVEN);
-        return total.doubleValue();
+    public BigDecimal totalPedido(Pedido pedido) {
+        pedido.calculaTotal();
+        return pedido.getTotalPedido().subtract(aplicaDesconto(pedido)).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

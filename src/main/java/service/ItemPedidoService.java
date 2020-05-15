@@ -6,6 +6,7 @@ import entity.ItemPedido;
 import repository.ItemPedidoRepository;
 import service.validation.orderItem.ValidacaoItemPedidoService;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ItemPedidoService {
@@ -27,16 +28,12 @@ public class ItemPedidoService {
     }
 
     public void addQuantidade(ItemPedido itemPedido, Integer qtd) {
-        for (ItemPedido x : itemPedidoRepository.getListaItens()) {
-            if (x.getProduto() == itemPedido.getProduto()) {
-                x.setQuantidade(x.getQuantidade() + qtd);
-            }
-        }
+        itemPedidoRepository.getListaItens().stream().filter(x -> x.getProduto().equals(itemPedido.getProduto())).forEach(x -> x.setQuantidade(x.getQuantidade() + qtd));
     }
 
     public void removeQuantidade(ItemPedido itemPedido, Integer qtd) throws CadastroInvalidoException {
         for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
-            if (itemPedidoList.getProduto() == itemPedido.getProduto()) {
+            if (itemPedidoList.getProduto().equals(itemPedido.getProduto())) {
                 if (itemPedidoList.getQuantidade() > qtd) {
                     itemPedidoList.setQuantidade(itemPedidoList.getQuantidade() - qtd);
                 } else {
@@ -46,11 +43,7 @@ public class ItemPedidoService {
         }
     }
 
-    public Double getTotalItemSvc() {
-        Double total = 0.0;
-        for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
-            total += itemPedidoList.getTotalItem();
-        }
-        return total;
+    public BigDecimal getTotalItemSvc() {
+        return itemPedidoRepository.getListaItens().stream().map(ItemPedido::getTotalItem).reduce(BigDecimal::add).get();
     }
 }
