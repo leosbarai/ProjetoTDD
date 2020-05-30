@@ -25,7 +25,7 @@ public class TestItemPedidoService {
     @Test
     public void adicionarItensPedido() throws CadastroInvalidoException {
 
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal("1.0"))));
 
         Assert.assertEquals(1, itemPedidoService.itemPedidoList().size());
     }
@@ -33,9 +33,9 @@ public class TestItemPedidoService {
     @Test
     public void removerItensPedido() throws CadastroInvalidoException {
 
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal(1.0))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("005", "Queijo", new BigDecimal(1.50))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("006", "Pão", new BigDecimal("1.0"))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal("3.00"))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("005", "Queijo", new BigDecimal("1.50"))));
 
         itemPedidoService.removeItemPedidoSvc(itemPedidoService.itemPedidoList().get(0));
 
@@ -45,7 +45,7 @@ public class TestItemPedidoService {
     @Test
     public void adicionarQuantidade() throws CadastroInvalidoException {
 
-        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(1, new Produto("003", "Hamburguer de carne", new BigDecimal("3.00"))));
         itemPedidoService.addQuantidade(itemPedidoService.itemPedidoList().get(0), 4);
 
         Assert.assertEquals((Integer) 5, itemPedidoService.itemPedidoList().get(0).getQuantidade());
@@ -54,7 +54,7 @@ public class TestItemPedidoService {
     @Test
     public void removerQuantidade() throws CadastroInvalidoException {
 
-        itemPedidoService.addItemPedidoSvc(itemPedido(5, new Produto("003", "Hamburguer de carne", new BigDecimal(3.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(5, new Produto("003", "Hamburguer de carne", new BigDecimal("3.00"))));
         itemPedidoService.removeQuantidade(itemPedidoService.itemPedidoList().get(0), 4);
 
         Assert.assertEquals((Integer) 1, itemPedidoService.itemPedidoList().get(0).getQuantidade());
@@ -63,9 +63,9 @@ public class TestItemPedidoService {
     @Test
     public void totalItem() throws CadastroInvalidoException {
 
-        itemPedidoService.addItemPedidoSvc(itemPedido(5, new Produto("002", "Bacon", new BigDecimal(2.00))));
+        itemPedidoService.addItemPedidoSvc(itemPedido(5, new Produto("002", "Bacon", new BigDecimal("2.00"))));
 
-        Assert.assertEquals(new BigDecimal(10.00).setScale(2, RoundingMode.HALF_EVEN), itemPedidoService.getTotalItemSvc());
+        Assert.assertEquals(new BigDecimal("10.00").setScale(2, RoundingMode.HALF_EVEN), itemPedidoService.getTotalItemSvc());
 
     }
 

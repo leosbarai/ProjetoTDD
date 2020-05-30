@@ -26,9 +26,9 @@ public class TestProdutoService {
     @Test
     public void adicionaProdutos() throws CadastroInvalidoException {
 
-        produtoService.addProdutoSvc(produto("001", "Bacon", new BigDecimal(1.50)));
+        produtoService.addProdutoSvc(produto("001", "Bacon", new BigDecimal("1.50")));
 
-        Assert.assertEquals(produtoService.produtoList().get(0).getDescricao(), new Produto("002", "Bacon", new BigDecimal(2.00)).getDescricao());
+        Assert.assertEquals(produtoService.produtoList().get(0).getDescricao(), new Produto("002", "Bacon", new BigDecimal("2.00")).getDescricao());
     }
 
     @Test
@@ -74,8 +74,8 @@ public class TestProdutoService {
     public void produtoComCodigoRepetido() {
 
         try {
-            produtoService.addProdutoSvc(produto("001", "Bacon", new BigDecimal(1.50)));
-            produtoService.addProdutoSvc(produto("001", "Alface", new BigDecimal(1.00)));
+            produtoService.addProdutoSvc(produto("001", "Bacon", new BigDecimal("1.50")));
+            produtoService.addProdutoSvc(produto("001", "Alface", new BigDecimal("1.00")));
         } catch (CadastroInvalidoException e) {
             Assert.assertEquals(MotivoCadastroInvalido.PRODUTO_EXISTENTE, e.getMotivo());
         }
