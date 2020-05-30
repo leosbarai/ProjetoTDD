@@ -16,13 +16,13 @@ public class PedidoService {
     private PedidoRepository pedidoRepository = new PedidoRepository();
 
     public List<Pedido> pedidoList() {
-        return pedidoRepository.getPedidoList();
+        return pedidoRepository.findAll();
     }
 
     public void adicionaPedido(Pedido pedido) throws CadastroInvalidoException {
         ValidacaoPedidoService validaCadastro = new ValidacaoPedidoService();
         validaCadastro.validaPedido(pedido);
-        pedidoRepository.addPedido(pedido);
+        pedidoRepository.add(pedido);
     }
 
     public BigDecimal aplicaDesconto(Pedido pedido) {
@@ -31,7 +31,7 @@ public class PedidoService {
     }
 
     public void removeItemPedido(Pedido pedido) {
-        pedidoRepository.removePedido(pedido);
+        pedidoRepository.remove(pedido);
     }
 
     public BigDecimal totalPedido(Pedido pedido) {

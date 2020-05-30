@@ -70,6 +70,6 @@ public class TestServiceUsuarios {
         usuarioService.adicionaUsuarioSvc(addUsuario("João", "joao@gmail.com"));
         usuarioService.removeUsuarioSvc(usuarioService.getUsuarios().get(1));
 
-        Assert.assertEquals(1, usuarioService.retonaTamanhoListaSvc().intValue());
+        Assert.assertEquals(1, usuarioService.retornaTamanhoListaSvc().intValue());
     }
 }

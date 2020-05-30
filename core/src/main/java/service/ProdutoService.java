@@ -12,17 +12,17 @@ public class ProdutoService {
     private ProdutoRepository produtoRepository = new ProdutoRepository();
 
     public List<Produto> produtoList() {
-        return produtoRepository.getListaProdutos();
+        return produtoRepository.findAll();
     }
 
     public void addProdutoSvc(Produto produto) throws CadastroInvalidoException {
         ValidacaoProdutoService validaCadastro = new ValidacaoProdutoService();
         validaCadastro.validaProduto(produto);
-        produtoRepository.addProdutos(produto);
+        produtoRepository.add(produto);
     }
 
     public void removeProdutosSvc(Produto produto) {
-        produtoRepository.removeProdutos(produto);
+        produtoRepository.remove(produto);
     }
 
 }

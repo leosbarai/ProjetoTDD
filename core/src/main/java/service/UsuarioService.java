@@ -14,23 +14,23 @@ public class UsuarioService {
     public void adicionaUsuarioSvc(Usuario usuario) throws CadastroInvalidoException {
         ValidacaoUsuarioService validaCadastro = new ValidacaoUsuarioService();
         validaCadastro.validaUsuario(usuario);
-        usuarioRepository.addUsuario(usuario);
+        usuarioRepository.add(usuario);
     }
 
-    public Integer retonaTamanhoListaSvc() {
-        if (usuarioRepository.retonaTamanhoLista() > 0) {
-            return usuarioRepository.retonaTamanhoLista();
+    public Integer retornaTamanhoListaSvc() {
+        if (usuarioRepository.size() > 0) {
+            return usuarioRepository.size();
         } else {
             return 0;
         }
     }
 
     public List<Usuario> getUsuarios() {
-        return usuarioRepository.getListaUsuario();
+        return usuarioRepository.findAll();
     }
 
     public String retornaListaUsuariosSvc() {
-        if (usuarioRepository.retonaTamanhoLista() > 0) {
+        if (usuarioRepository.size() > 0) {
             return usuarioRepository.retornaListaUsuarios();
         } else {
             return "Lista vazia!";
@@ -38,7 +38,7 @@ public class UsuarioService {
     }
 
     public void removeUsuarioSvc(Usuario usuario) {
-        usuarioRepository.removeUsuario(usuario);
+        usuarioRepository.remove(usuario);
     }
 
 }

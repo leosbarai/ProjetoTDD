@@ -14,25 +14,25 @@ public class ItemPedidoService {
     private ItemPedidoRepository itemPedidoRepository = new ItemPedidoRepository();
 
     public List<ItemPedido> itemPedidoList() {
-        return itemPedidoRepository.getListaItens();
+        return itemPedidoRepository.findAll();
     }
 
     public void addItemPedidoSvc(ItemPedido itemPedido) throws CadastroInvalidoException {
         ValidacaoItemPedidoService validaCadastro = new ValidacaoItemPedidoService();
         validaCadastro.validaItemPedido(itemPedido);
-        itemPedidoRepository.addItemPedido(itemPedido);
+        itemPedidoRepository.add(itemPedido);
     }
 
     public void removeItemPedidoSvc(ItemPedido itemPedido) {
-        itemPedidoRepository.removeItem(itemPedido);
+        itemPedidoRepository.remove(itemPedido);
     }
 
     public void addQuantidade(ItemPedido itemPedido, Integer qtd) {
-        itemPedidoRepository.getListaItens().stream().filter(x -> x.getProduto().equals(itemPedido.getProduto())).forEach(x -> x.setQuantidade(x.getQuantidade() + qtd));
+        itemPedidoRepository.findAll().stream().filter(x -> x.getProduto().equals(itemPedido.getProduto())).forEach(x -> x.setQuantidade(x.getQuantidade() + qtd));
     }
 
     public void removeQuantidade(ItemPedido itemPedido, Integer qtd) throws CadastroInvalidoException {
-        for (ItemPedido itemPedidoList : itemPedidoRepository.getListaItens()) {
+        for (ItemPedido itemPedidoList : itemPedidoRepository.findAll()) {
             if (itemPedidoList.getProduto().equals(itemPedido.getProduto())) {
                 if (itemPedidoList.getQuantidade() > qtd) {
                     itemPedidoList.setQuantidade(itemPedidoList.getQuantidade() - qtd);
@@ -44,6 +44,6 @@ public class ItemPedidoService {
     }
 
     public BigDecimal getTotalItemSvc() {
-        return itemPedidoRepository.getListaItens().stream().map(ItemPedido::getTotalItem).reduce(BigDecimal::add).get();
+        return itemPedidoRepository.findAll().stream().map(ItemPedido::getTotalItem).reduce(BigDecimal::add).get();
     }
 }
