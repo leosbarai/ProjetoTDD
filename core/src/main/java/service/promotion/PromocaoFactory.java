@@ -1,32 +1,20 @@
 package service.promotion;
 
 import entity.Pedido;
-import entity.Promocao;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class PromocaoFactory {
 
+    private static final List<Desconto> promocoes = Arrays.asList(new Light(), new MuitaCarne()
+            , new MuitoQueijo(), new Bruto(), new Gordao());
+
     public static Desconto desconto(Pedido pedido) {
-
-        Promocao promocao = new Promocao();
-
-        if (promocao.isLight(pedido)) {
-            return new Light();
-        }
-
-        if (promocao.isMuitaCarne(pedido)) {
-            return new MuitaCarne();
-        }
-
-        if (promocao.isMuitoQueijo(pedido)) {
-            return new MuitoQueijo();
-        }
-
-        if (promocao.isBruto(pedido)) {
-            return new Bruto();
-        }
-
-        if (promocao.isGordao(pedido)) {
-            return new Gordao();
+        for (Desconto desconto : promocoes) {
+            if (desconto.validate(pedido)) {
+                return desconto;
+            }
         }
 
         return new SemDesconto();

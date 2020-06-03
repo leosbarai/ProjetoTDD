@@ -10,4 +10,9 @@ public class SemDesconto implements Desconto {
     public BigDecimal getDesconto(Pedido pedido) {
         return BigDecimal.valueOf(0);
     }
+
+    @Override
+    public Boolean validate(Pedido pedido) {
+        return null;
+    }
 }

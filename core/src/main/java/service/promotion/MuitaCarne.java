@@ -23,4 +23,16 @@ public class MuitaCarne implements Desconto {
 
         return BigDecimal.valueOf(quantidade);
     }
+
+    @Override
+    public Boolean validate(Pedido pedido) {
+        for (ItemPedido itemPedido : pedido.getItemPedidoList()) {
+            if (itemPedido.getProduto().getDescricao().equals("Hamburguer de carne") &&
+                    itemPedido.getQuantidade() >= 3) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
