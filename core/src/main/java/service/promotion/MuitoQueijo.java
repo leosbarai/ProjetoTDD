@@ -25,13 +25,7 @@ public class MuitoQueijo implements Desconto {
 
     @Override
     public Boolean validate(Pedido pedido) {
-        for (ItemPedido itemPedido : pedido.getItemPedidoList()) {
-            if (itemPedido.getProduto().getDescricao().equals("Queijo") &&
-                    itemPedido.getQuantidade() >= 3) {
-                return true;
-            }
-        }
-
-        return false;
+        return pedido.getItemPedidoList().stream().anyMatch(itemPedido -> itemPedido.getProduto().getDescricao().equals("Queijo") &&
+                itemPedido.getQuantidade() >= 3);
     }
 }
