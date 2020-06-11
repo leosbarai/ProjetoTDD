@@ -31,17 +31,13 @@ public class Pedido {
     }
 
     public BigDecimal getTotalPedido() {
-        return totalPedido;
+        return this.totalPedido  = itemPedidoList.stream()
+                .map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public void setItemPedidoList(List<ItemPedido> itemPedidoList) {
         this.itemPedidoList = itemPedidoList;
-    }
-
-    public void calculaTotal() {
-        this.totalPedido  = itemPedidoList.stream()
-                .map(ItemPedido::getTotalItem).reduce(BigDecimal.ZERO, BigDecimal::add)
-                .setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }

@@ -3,8 +3,6 @@ package service;
 import cadastroexception.CadastroInvalidoException;
 import entity.Pedido;
 import repository.PedidoRepository;
-import service.promotion.Desconto;
-import service.promotion.PromocaoFactory;
 import service.validation.order.ValidacaoPedidoService;
 
 import java.math.BigDecimal;
@@ -25,18 +23,12 @@ public class PedidoService {
         pedidoRepository.add(pedido);
     }
 
-    public BigDecimal aplicaDesconto(Pedido pedido) {
-        Desconto valorDesconto = PromocaoFactory.desconto(pedido);
-        return valorDesconto.getDesconto(pedido);
-    }
-
     public void removeItemPedido(Pedido pedido) {
         pedidoRepository.remove(pedido);
     }
 
     public BigDecimal totalPedido(Pedido pedido) {
-        pedido.calculaTotal();
-        return pedido.getTotalPedido().subtract(aplicaDesconto(pedido)).setScale(2, RoundingMode.HALF_EVEN);
+        return pedido.getTotalPedido().subtract(PromocaoService.aplicaDesconto(pedido)).setScale(2, RoundingMode.HALF_EVEN);
     }
 
 }
