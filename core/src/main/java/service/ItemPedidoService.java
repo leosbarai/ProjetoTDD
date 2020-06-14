@@ -4,7 +4,7 @@ import cadastroexception.CadastroInvalidoException;
 import cadastroexception.MotivoCadastroInvalido;
 import entity.ItemPedido;
 import repository.ItemPedidoRepository;
-import service.validation.orderItem.ValidacaoItemPedidoService;
+import service.validation.orderItem.ValidaItemPedidoDecorator;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -18,9 +18,7 @@ public class ItemPedidoService {
     }
 
     public void addItemPedidoSvc(ItemPedido itemPedido) throws CadastroInvalidoException {
-        ValidacaoItemPedidoService validaCadastro = new ValidacaoItemPedidoService();
-        validaCadastro.validaItemPedido(itemPedido);
-        itemPedidoRepository.add(itemPedido);
+        itemPedidoRepository.add(ValidaItemPedidoDecorator.validaItemPedido(itemPedido));
     }
 
     public void removeItemPedidoSvc(ItemPedido itemPedido) {

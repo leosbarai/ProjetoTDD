@@ -78,7 +78,6 @@ public class ValidaUsuarioDecorator {
         public Usuario validaCadastros(Usuario usuario) {
             return usuario;
         }
-
     }
 
     public static Usuario validaUsuario(Usuario usuario) throws CadastroInvalidoException {
