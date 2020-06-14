@@ -3,7 +3,7 @@ package service;
 import cadastroexception.CadastroInvalidoException;
 import entity.Pedido;
 import repository.PedidoRepository;
-import service.validation.order.ValidacaoPedidoService;
+import service.validation.order.ValidaPedidoDecorator;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,9 +18,7 @@ public class PedidoService {
     }
 
     public void adicionaPedido(Pedido pedido) throws CadastroInvalidoException {
-        ValidacaoPedidoService validaCadastro = new ValidacaoPedidoService();
-        validaCadastro.validaPedido(pedido);
-        pedidoRepository.add(pedido);
+        pedidoRepository.add(ValidaPedidoDecorator.validaPedido(pedido));
     }
 
     public void removeItemPedido(Pedido pedido) {
