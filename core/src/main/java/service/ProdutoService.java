@@ -3,7 +3,7 @@ package service;
 import cadastroexception.CadastroInvalidoException;
 import entity.Produto;
 import repository.ProdutoRepository;
-import service.validation.product.ValidacaoProdutoService;
+import service.validation.product.ValidaProdutoDecorator;
 
 import java.util.List;
 
@@ -16,9 +16,7 @@ public class ProdutoService {
     }
 
     public void addProdutoSvc(Produto produto) throws CadastroInvalidoException {
-        ValidacaoProdutoService validaCadastro = new ValidacaoProdutoService();
-        validaCadastro.validaProduto(produto);
-        produtoRepository.add(produto);
+        produtoRepository.add(ValidaProdutoDecorator.validaProduto(produto));
     }
 
     public void removeProdutosSvc(Produto produto) {

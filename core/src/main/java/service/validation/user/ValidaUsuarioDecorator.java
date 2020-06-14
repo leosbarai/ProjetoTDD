@@ -21,7 +21,6 @@ public class ValidaUsuarioDecorator {
 
             return usuario;
         }
-
     }
 
     public static class ValidaUsuarioDecoratorEmailNulo extends RegisterValidation<Usuario> {
@@ -37,7 +36,6 @@ public class ValidaUsuarioDecorator {
 
             return usuario;
         }
-
     }
 
     public static class ValidaUsuarioDecoratorFormatoEmail extends RegisterValidation<Usuario> {
@@ -72,13 +70,9 @@ public class ValidaUsuarioDecorator {
 
             return usuario;
         }
-
     }
 
     public static class UsuarioDecoratorValido extends RegisterValidation<Usuario> {
-
-        public UsuarioDecoratorValido() {
-        }
 
         @Override
         public Usuario validaCadastros(Usuario usuario) {
@@ -88,7 +82,11 @@ public class ValidaUsuarioDecorator {
     }
 
     public static Usuario validaUsuario(Usuario usuario) throws CadastroInvalidoException {
-        RegisterValidation<Usuario> registerValidation = new ValidaUsuarioDecoratorNulo(new ValidaUsuarioDecoratorEmailNulo(new ValidaUsuarioDecoratorFormatoEmail(new ValidaUsuarioDecoratorEmailExistente(new UsuarioDecoratorValido()))));
-        return registerValidation.validaCadastros(usuario);
+        RegisterValidation<Usuario> usuarioRegisterValidation = new ValidaUsuarioDecoratorNulo(
+                new ValidaUsuarioDecoratorEmailNulo(
+                        new ValidaUsuarioDecoratorFormatoEmail(
+                                new ValidaUsuarioDecoratorEmailExistente(new UsuarioDecoratorValido()))));
+
+        return usuarioRegisterValidation.validaCadastros(usuario);
     }
 }
